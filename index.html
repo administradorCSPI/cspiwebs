@@ -1244,9 +1244,9 @@
         chatHistory.push({ role: 'model', parts: [{ text: data.reply }] });
         typingEl.classList.remove('visible');
         appendMsg(data.reply || '[respuesta vacía]', 'bot');
-      } catch (err) {
+      } catch {
         typingEl.classList.remove('visible');
-        appendMsg('DBG: ' + (err.message || String(err)), 'bot');
+        appendMsg('Lo siento, ha habido un error. Escríbenos a admin@cspiwebs.com', 'bot');
       }
       sendBtn.disabled = false;
       input.focus();
