@@ -1238,16 +1238,15 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ messages: chatHistory })
         });
-        if (!res.ok) throw new Error();
         let data;
         try { data = await res.json(); } catch { data = {}; }
         if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
         chatHistory.push({ role: 'model', parts: [{ text: data.reply }] });
         typingEl.classList.remove('visible');
-        appendMsg(data.reply, 'bot');
+        appendMsg(data.reply || '[respuesta vacía]', 'bot');
       } catch (err) {
         typingEl.classList.remove('visible');
-        appendMsg('DBG: ' + (err.message || 'sin mensaje'), 'bot');
+        appendMsg('DBG: ' + (err.message || String(err)), 'bot');
       }
       sendBtn.disabled = false;
       input.focus();
