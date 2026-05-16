@@ -54,6 +54,44 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una página web para un negocio en Madrid?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Nuestros precios van desde 499€ para una web de presentación hasta 1.399€ para una presencia digital completa. Todos los presupuestos son fijos y sin costes ocultos. Puedes ver el detalle en la sección de precios o pedirnos presupuesto personalizado gratis."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿En cuánto tiempo tendré mi página web lista?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Entregamos en 7 días desde que nos envías los materiales (textos, fotos, logo). El proceso comienza con una consulta gratuita el mismo día que nos contactas."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre vuestra web y hacerla con Wix o WordPress?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Las plataformas tipo Wix o WordPress generan código muy pesado que penaliza la velocidad y el SEO. Nosotros escribimos código limpio a medida: tu web cargará más rápido, posicionará mejor en Google y no dependerás de suscripciones mensuales para que funcione."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Incluís el dominio y el hosting en el precio?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El desarrollo de la web no incluye dominio ni hosting, pero te asesoramos en la contratación de ambos. Trabajamos con proveedores fiables y económicos, y la configuración la hacemos nosotros."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo actualizar la web yo mismo después?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Sí. Si necesitas un gestor de contenidos para actualizar tu web sin saber programar, lo incluimos. Si prefieres que lo hagamos nosotros, ofrecemos planes de mantenimiento mensual."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Trabajáis solo en Madrid o también en otras ciudades?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Nuestra base está en Madrid y ofrecemos atención presencial, pero trabajamos con clientes en toda España. Toda la comunicación puede hacerse online sin ningún problema."}
+    }
+  ]
+}
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -333,6 +371,16 @@
   .form-success p { color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 400; margin-top: 0.5rem; }
   .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
+  /* FAQ */
+  .faq-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.5rem; max-width: 720px; }
+  .faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+  .faq-item[open] { border-color: var(--border2); }
+  .faq-question { padding: 1.1rem 1.5rem; font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; color: var(--accent); font-size: 1.3rem; font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item[open] .faq-question::after { content: '−'; }
+  .faq-answer { padding: 0 1.5rem 1.1rem; font-size: 0.855rem; color: var(--muted); line-height: 1.75; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -366,14 +414,15 @@
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#precios">Precios</a></li>
+    <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="#contacto" class="nav-cta" aria-label="Ir al formulario de contacto">Hablemos →</a>
 </nav>
 
 <header class="hero">
-  <div class="hero-badge">Disponibles en Madrid · Entrega en 1 semana</div>
-  <h1>Tu negocio merece<br>una web <em>que venda</em></h1>
-  <p class="hero-sub">Diseñamos y desarrollamos páginas web profesionales para negocios locales de Madrid. Rápidas, elegantes y pensadas para convertir.</p>
+  <div class="hero-badge">Agencia de diseño web en Madrid · Entrega en 7 días</div>
+  <h1>Tu negocio en Madrid merece<br>una web <em>que venda</em></h1>
+  <p class="hero-sub">Creamos páginas web profesionales para negocios locales en Madrid. Diseño a medida, código real y entrega en 7 días. Más clientes desde el primer mes.</p>
   <div class="hero-actions">
     <a href="#contacto" class="btn-primary">Pedir presupuesto gratuito</a>
     <a href="#portfolio" class="btn-ghost">Ver trabajos →</a>
@@ -391,25 +440,25 @@
 
 <section id="servicios">
   <div class="section-label">Servicios</div>
-  <h2>Todo lo que necesitas para estar online</h2>
-  <p class="section-sub">Sin agencias intermediarias ni presupuestos inflados. Trato directo, precio justo.</p>
+  <h2>Diseño web en Madrid para negocios que quieren crecer</h2>
+  <p class="section-sub">Sin agencias intermediarias ni presupuestos inflados. Trato directo contigo, precio fijo y código que es tuyo para siempre.</p>
   <div class="services-grid fade-in">
     <div class="service-card">
       <div class="service-icon" aria-hidden="true">🌐</div>
-      <h3>Diseño y desarrollo web</h3>
-      <p>Webs a medida, rápidas y con código limpio. Sin plantillas genéricas. Cada web refleja la identidad de tu negocio.</p>
-      <div class="service-tag">Entrega en 1 semana</div>
+      <h3>Diseño y desarrollo web en Madrid</h3>
+      <p>Páginas web a medida para negocios madrileños. Sin plantillas ni constructores lentos: código limpio, carga rápida y diseño que refleja tu marca y convierte visitas en clientes.</p>
+      <div class="service-tag">Entrega en 7 días</div>
     </div>
     <div class="service-card">
       <div class="service-icon" aria-hidden="true">📱</div>
-      <h3>Redes sociales</h3>
-      <p>Creación y optimización de perfiles en Instagram, LinkedIn y Google Business. Presencia coherente en todos los canales.</p>
+      <h3>Gestión de redes sociales</h3>
+      <p>Creamos y optimizamos tus perfiles en Instagram, LinkedIn y Google Business. Presencia digital coherente que genera confianza desde el primer contacto con tu negocio.</p>
       <div class="service-tag">Pack completo disponible</div>
     </div>
     <div class="service-card">
       <div class="service-icon" aria-hidden="true">🔍</div>
-      <h3>SEO básico</h3>
-      <p>Optimización para que Google te encuentre. Palabras clave, meta etiquetas y velocidad desde el día uno.</p>
+      <h3>SEO local en Madrid</h3>
+      <p>Posicionamos tu web para que aparezca cuando alguien en Madrid busca lo que tú ofreces. Palabras clave locales, velocidad de carga y estructura técnica desde el primer día.</p>
       <div class="service-tag">Incluido en toda web</div>
     </div>
   </div>
@@ -419,24 +468,24 @@
 
 <section id="proceso">
   <div class="section-label">Proceso</div>
-  <h2>De cero a online en 4 pasos</h2>
-  <p class="section-sub">Un proceso claro y sin sorpresas.</p>
+  <h2>Tu página web en Madrid, lista en 7 días</h2>
+  <p class="section-sub">Un proceso claro y sin sorpresas. Tú aportas el negocio, nosotros la web.</p>
   <div class="process-wrapper fade-in">
     <div class="process-step">
       <div class="step-num">01</div>
-      <div class="step-body"><h4>Consulta gratuita</h4><p>Nos cuentas qué necesitas. Analizamos tu negocio y proponemos la solución más adecuada.</p></div>
+      <div class="step-body"><h4>Consulta gratuita</h4><p>Nos cuentas qué necesita tu negocio. Analizamos tu situación y te proponemos la solución más adecuada sin ningún compromiso.</p></div>
     </div>
     <div class="process-step">
       <div class="step-num">02</div>
-      <div class="step-body"><h4>Diseño y propuesta</h4><p>En 24–48h tendrás una primera propuesta visual adaptada a tu identidad de marca.</p></div>
+      <div class="step-body"><h4>Propuesta de diseño</h4><p>En 24–48h tendrás una primera propuesta visual adaptada a tu marca. Iteramos hasta que sea exactamente lo que buscas.</p></div>
     </div>
     <div class="process-step">
       <div class="step-num">03</div>
-      <div class="step-body"><h4>Desarrollo y revisión</h4><p>Construimos la web con código real. Revisas y propones cambios hasta que quede perfecto.</p></div>
+      <div class="step-body"><h4>Desarrollo y revisión</h4><p>Construimos tu web con código limpio y real. Revisas, propones cambios y apruebas antes de publicar.</p></div>
     </div>
     <div class="process-step">
       <div class="step-num">04</div>
-      <div class="step-body"><h4>Entrega y lanzamiento</h4><p>Publicamos tu web en menos de una semana desde que nos envíes los materiales.</p></div>
+      <div class="step-body"><h4>Lanzamiento y entrega</h4><p>Publicamos tu nueva página web en 7 días desde que nos envías los materiales. Con dominio, hosting y SEO configurados.</p></div>
     </div>
   </div>
 </section>
@@ -445,8 +494,8 @@
 
 <section id="portfolio">
   <div class="section-label">Portfolio</div>
-  <h2>Trabajos recientes</h2>
-  <p class="section-sub">Proyectos reales para clientes reales en Madrid.</p>
+  <h2>Páginas web que hemos creado en Madrid</h2>
+  <p class="section-sub">Proyectos reales para negocios reales de Madrid. Cada web, única y pensada para su sector.</p>
   <div class="portfolio-grid fade-in">
     <div class="portfolio-card">
       <div class="portfolio-img arch">
@@ -500,8 +549,8 @@
 
 <section id="precios">
   <div class="section-label">Precios</div>
-  <h2>Claro, sin sorpresas</h2>
-  <p class="section-sub">Precios fijos pensados para negocios locales. Sin letras pequeñas.</p>
+  <h2>¿Cuánto cuesta una página web en Madrid?</h2>
+  <p class="section-sub">Precios fijos pensados para negocios locales madrileños. Sin costes ocultos, sin renovaciones forzadas. Lo que ves es lo que pagas.</p>
   <div class="pricing-grid fade-in">
     <div class="price-card">
       <div class="price-name">Básico</div>
@@ -550,16 +599,50 @@
 
 <hr class="full-divider">
 
+<section id="faq" aria-labelledby="faq-heading">
+  <div class="section-label">FAQ</div>
+  <h2 id="faq-heading">Preguntas frecuentes sobre diseño web en Madrid</h2>
+  <p class="section-sub">Todo lo que necesitas saber antes de empezar con tu nueva página web.</p>
+  <div class="faq-list fade-in">
+    <details class="faq-item">
+      <summary class="faq-question">¿Cuánto cuesta una página web para un negocio en Madrid?</summary>
+      <div class="faq-answer">Nuestros precios van desde <strong>499€</strong> para una web de presentación hasta <strong>1.399€</strong> para una presencia digital completa. Todos los presupuestos son fijos y sin costes ocultos. Puedes ver el detalle en la sección de precios o pedirnos presupuesto personalizado gratis.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿En cuánto tiempo tendré mi página web lista?</summary>
+      <div class="faq-answer">Entregamos en <strong>7 días</strong> desde que nos envías los materiales (textos, fotos y logo). El proceso comienza con una consulta gratuita el mismo día que nos contactas, sin esperas.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Qué diferencia hay entre vuestra web y hacerla con Wix o WordPress?</summary>
+      <div class="faq-answer">Las plataformas tipo Wix o WordPress generan código muy pesado que penaliza la velocidad y el posicionamiento en Google. Nosotros escribimos <strong>código limpio a medida</strong>: tu web cargará más rápido, posicionará mejor y no dependerás de suscripciones mensuales para que funcione.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Incluís el dominio y el hosting en el precio?</summary>
+      <div class="faq-answer">El desarrollo de la web no incluye dominio ni hosting, pero <strong>te asesoramos en la contratación</strong> de ambos con proveedores fiables y económicos. La configuración técnica la hacemos nosotros sin coste adicional.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Puedo actualizar la web yo mismo después?</summary>
+      <div class="faq-answer">Sí. Si necesitas un gestor de contenidos para actualizar tu web sin saber programar, lo incluimos. Si prefieres que nos encarguemos nosotros, ofrecemos <strong>planes de mantenimiento mensual</strong> a medida.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-question">¿Trabajáis solo en Madrid o también en otras ciudades?</summary>
+      <div class="faq-answer">Nuestra base está en <strong>Madrid y ofrecemos atención presencial</strong>, pero trabajamos con clientes en toda España. Toda la comunicación puede hacerse online sin ningún problema ni coste adicional.</div>
+    </details>
+  </div>
+</section>
+
+<hr class="full-divider">
+
 <section id="contacto">
   <div class="section-label">Contacto</div>
-  <h2>¿Hablamos?</h2>
+  <h2>Pide presupuesto de diseño web en Madrid</h2>
   <div class="contact-wrapper">
     <div class="contact-info">
-      <h3>Cuéntanos qué necesita tu negocio</h3>
-      <p>Respondemos en menos de 24 horas. Primera consulta completamente gratuita y sin compromiso.</p>
-      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Madrid</strong> · Atención presencial disponible</span></div>
-      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Entrega garantizada</strong> en 1 semana desde materiales</span></div>
-      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Presupuesto gratuito</strong> en 24 horas</span></div>
+      <h3>Cuéntanos qué necesita tu negocio en Madrid</h3>
+      <p>Respondemos en menos de 24 horas. Primera consulta completamente gratuita, sin compromiso y sin presión. Solo escuchamos y te damos nuestra opinión honesta.</p>
+      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Madrid</strong> · Atención presencial y online disponible</span></div>
+      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Entrega garantizada</strong> en 7 días desde que nos envíes los materiales</span></div>
+      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Presupuesto gratuito</strong> y personalizado en menos de 24 horas</span></div>
     </div>
     <div class="contact-form">
       <div class="form-row">
