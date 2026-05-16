@@ -458,6 +458,46 @@
   .faq-item[open] .faq-question::after { content: '−'; }
   .faq-answer { padding: 0 1.5rem 1.1rem; font-size: 0.855rem; color: var(--muted); line-height: 1.75; }
 
+  /* HERO TRUST */
+  .hero-trust { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.25rem; }
+  .hero-trust span { font-size: 0.775rem; color: var(--muted); display: flex; align-items: center; gap: 0.35rem; }
+  .hero-trust span::before { content: '✓'; color: var(--accent); font-weight: 700; font-size: 0.8rem; }
+
+  /* GARANTÍAS */
+  .garantias-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+  .garantia-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s; }
+  .garantia-card:hover { border-color: rgba(110,231,183,0.2); }
+  .garantia-icon { font-size: 1.4rem; margin-bottom: 0.75rem; line-height: 1; }
+  .garantia-card h3 { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.45rem; }
+  .garantia-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.65; }
+
+  /* CASO DE ÉXITO */
+  .caso-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; margin-top: 2rem; transition: border-color 0.2s; }
+  .caso-card:hover { border-color: rgba(110,231,183,0.15); }
+  .caso-visual { background: linear-gradient(135deg, #0d1a14, #0a2018); display: flex; align-items: center; justify-content: center; min-height: 220px; }
+  .caso-body { padding: 2rem; }
+  .caso-sector { font-size: 0.77rem; color: var(--muted); margin-bottom: 1.25rem; }
+  .caso-bloque { margin-bottom: 1rem; }
+  .caso-bloque h4 { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+  .caso-bloque p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+  .caso-footer { margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--bg3); border-radius: 10px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .caso-footer p { font-size: 0.85rem; color: var(--muted); }
+  .caso-footer strong { color: var(--text); }
+
+  /* PRICING NOTE */
+  .pricing-note { text-align: center; margin-top: 1.25rem; font-size: 0.8rem; color: var(--muted); }
+  .pricing-note a { color: var(--accent); text-decoration: none; }
+  .pricing-note a:hover { text-decoration: underline; }
+  .price-badge { font-size: 0.68rem; color: var(--muted); text-align: center; margin-top: 0.5rem; letter-spacing: 0.03em; }
+
+  /* FORM REASSURANCE */
+  .form-reassurance { text-align: center; margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+  .form-reassurance a { color: var(--accent); text-decoration: none; }
+  .form-reassurance a:hover { text-decoration: underline; }
+
+  /* MOBILE STICKY CTA */
+  .mobile-cta-sticky { display: none; }
+
   /* PERFORMANCE */
   #portfolio, #precios, #faq, #contacto {
     content-visibility: auto;
@@ -492,6 +532,26 @@
     footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
 
     .hero-stats { gap: 1.5rem; }
+    .garantias-grid { grid-template-columns: 1fr; }
+    .caso-card { grid-template-columns: 1fr; }
+    .caso-visual { min-height: 140px; }
+
+    /* Mobile sticky CTA */
+    .mobile-cta-sticky {
+      display: flex;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 0.85rem 1.25rem;
+      background: rgba(10,10,11,0.97);
+      backdrop-filter: blur(12px);
+      border-top: 1px solid var(--border2);
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .mobile-cta-text { font-size: 0.82rem; color: var(--muted); flex: 1; }
+    .mobile-cta-btn { background: var(--accent); color: #0A0A0B; padding: 0.55rem 1.1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
   }
 </style>
 </head>
@@ -507,10 +567,10 @@
   </div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#zonas">Zonas</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#precios">Precios</a></li>
     <li><a href="#faq">FAQ</a></li>
+    <li><a href="#zonas">Zonas</a></li>
   </ul>
   <a href="#contacto" class="nav-cta" aria-label="Ir al formulario de contacto">Hablemos →</a>
 </nav>
@@ -523,9 +583,15 @@
     <a href="#contacto" class="btn-primary">Presupuesto gratis en 24h →</a>
     <a href="#portfolio" class="btn-ghost">Ver trabajos</a>
   </div>
+  <div class="hero-trust" aria-label="Garantías">
+    <span>Precio fijo</span>
+    <span>Sin permanencia</span>
+    <span>El código es tuyo</span>
+    <span>Respuesta en 24h</span>
+  </div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">1<span>sem</span></div><div class="stat-label">Tiempo de entrega</div></div>
-    <div class="stat"><div class="stat-num"><span>+</span>2</div><div class="stat-label">Proyectos entregados</div></div>
+    <div class="stat"><div class="stat-num">7<span>días</span></div><div class="stat-label">Tiempo de entrega</div></div>
+    <div class="stat"><div class="stat-num">0<span>€</span></div><div class="stat-label">Primera consulta gratuita</div></div>
     <div class="stat"><div class="stat-num">100<span>%</span></div><div class="stat-label">Clientes satisfechos</div></div>
     <div class="stat"><div class="stat-num">Madrid</div><div class="stat-label">Atención local y directa</div></div>
   </div>
@@ -556,6 +622,31 @@
       <h3>SEO local en Madrid</h3>
       <p>Posicionamos tu web para que aparezca cuando alguien en Madrid busca lo que tú ofreces. Palabras clave locales, velocidad de carga y estructura técnica desde el primer día.</p>
       <div class="service-tag">Incluido en toda web</div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<section id="garantias" aria-labelledby="garantias-heading">
+  <div class="section-label">Por qué elegirnos</div>
+  <h2 id="garantias-heading">Lo que nos diferencia de otras agencias</h2>
+  <p class="section-sub">No somos una agencia grande que te asigna un junior. Somos los que hacen el trabajo, y lo firmamos.</p>
+  <div class="garantias-grid fade-in">
+    <div class="garantia-card">
+      <div class="garantia-icon" aria-hidden="true">🎯</div>
+      <h3>Precio fijo garantizado</h3>
+      <p>Te enviamos el presupuesto antes de empezar. Sin costes extra ni sorpresas al final. Lo que acordamos es lo que pagas, punto.</p>
+    </div>
+    <div class="garantia-card">
+      <div class="garantia-icon" aria-hidden="true">🔄</div>
+      <h3>Revisiones hasta que quede perfecto</h3>
+      <p>Incluimos todas las revisiones necesarias en el precio. Cuando apruebas tú es cuando publicamos, no antes.</p>
+    </div>
+    <div class="garantia-card">
+      <div class="garantia-icon" aria-hidden="true">💻</div>
+      <h3>El código es tuyo al 100%</h3>
+      <p>No te atamos a ninguna suscripción. Entregamos el código fuente completo. Eres libre de cambiar de proveedor cuando quieras.</p>
     </div>
   </div>
 </section>
@@ -682,6 +773,53 @@
 
 <hr class="full-divider">
 
+<section id="caso" aria-labelledby="caso-heading">
+  <div class="section-label">Caso de éxito</div>
+  <h2 id="caso-heading">Un proyecto real, un resultado real</h2>
+  <p class="section-sub">No hace falta un portfolio de cincuenta webs para hacer bien el trabajo. Hace falta hacerlo bien.</p>
+  <div class="caso-card fade-in">
+    <div class="caso-visual" aria-hidden="true">
+      <div class="portfolio-mockup">
+        <div class="mockup-bar">
+          <div class="dot" style="background:#6EE7B7;opacity:0.6"></div>
+          <div class="dot" style="background:#71717A;opacity:0.4"></div>
+          <div class="dot" style="background:#71717A;opacity:0.4"></div>
+        </div>
+        <div class="mockup-content">
+          <div class="mockup-line accent"></div>
+          <div class="mockup-line med"></div>
+          <div class="mockup-line short"></div>
+          <div class="mockup-line"></div>
+          <div class="mockup-line med"></div>
+        </div>
+      </div>
+    </div>
+    <div class="caso-body">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:0.3rem">Camacho Maciá Arquitectos</h3>
+      <p class="caso-sector">Estudio de arquitectura · Madrid · 2025</p>
+      <div class="caso-bloque">
+        <h4>El reto</h4>
+        <p>Un estudio de arquitectura con proyectos excepcionales pero sin presencia digital. Sus potenciales clientes no los encontraban en Google.</p>
+      </div>
+      <div class="caso-bloque">
+        <h4>La solución</h4>
+        <p>Web profesional a medida que refleja la identidad del estudio: elegante, rápida y optimizada para búsquedas locales de arquitectura en Madrid.</p>
+      </div>
+      <div class="caso-bloque">
+        <h4>El resultado</h4>
+        <p>Entregada en 7 días. Presencia online que transmite la calidad de su trabajo desde el primer segundo. Visible en Google para su sector y ubicación.</p>
+      </div>
+      <a href="https://camachomaciaarquitectos.com" target="_blank" rel="noopener noreferrer" class="portfolio-info" style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.82rem;color:var(--accent);text-decoration:none;margin-top:0.5rem" aria-label="Ver web de Camacho Maciá Arquitectos (abre en nueva pestaña)">Ver la web en vivo →</a>
+    </div>
+  </div>
+  <div class="caso-footer">
+    <p><strong>¿Tu negocio podría ser el siguiente caso de éxito?</strong> Cuéntanos qué necesitas — la consulta es gratis.</p>
+    <a href="#contacto" class="btn-primary">Hablemos de tu proyecto</a>
+  </div>
+</section>
+
+<hr class="full-divider">
+
 <section id="precios">
   <div class="section-label">Precios</div>
   <h2>¿Cuánto cuesta una página web en Madrid?</h2>
@@ -690,7 +828,7 @@
     <div class="price-card">
       <div class="price-name">Básico</div>
       <div class="price-amount"><sup>€</sup>499</div>
-      <div class="price-desc">Web de presentación sencilla</div>
+      <div class="price-desc">Para arrancar con presencia online que funcione</div>
       <ul class="price-features">
         <li>Hasta 4 páginas</li>
         <li>Diseño a medida</li>
@@ -704,7 +842,7 @@
       <div class="featured-badge">MÁS POPULAR</div>
       <div class="price-name" style="color:var(--accent)">Profesional</div>
       <div class="price-amount" style="color:var(--accent)"><sup>€</sup>899</div>
-      <div class="price-desc">Ideal para profesionales y pymes</div>
+      <div class="price-desc">El más elegido por negocios locales de Madrid</div>
       <ul class="price-features">
         <li>Hasta 8 páginas</li>
         <li>Diseño premium a medida</li>
@@ -718,7 +856,7 @@
     <div class="price-card">
       <div class="price-name">Completo</div>
       <div class="price-amount"><sup>€</sup>1.399</div>
-      <div class="price-desc">Presencia digital total</div>
+      <div class="price-desc">Para dominar tu mercado local en Madrid</div>
       <ul class="price-features">
         <li>Páginas ilimitadas</li>
         <li>Diseño premium + animaciones</li>
@@ -730,6 +868,7 @@
       <a href="#contacto" class="price-btn">Solicitar</a>
     </div>
   </div>
+  <p class="pricing-note">Todos los planes incluyen revisiones ilimitadas, código en propiedad y sin permanencia. ¿No sabes cuál elegir? <a href="#contacto">Te asesoramos gratis →</a></p>
 </section>
 
 <hr class="full-divider">
@@ -806,6 +945,9 @@
       </div>
       <div class="form-group"><label for="mensaje">Cuéntanos un poco más</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="¿Qué tipo de negocio tienes? ¿Tienes ya algo online?"></textarea></div>
       <button class="submit-btn" id="submit-btn" type="button" aria-label="Enviar solicitud de presupuesto gratuito">Solicitar presupuesto gratuito →</button>
+      <p class="form-reassurance">Sin compromiso · Sin spam · Respondemos en menos de 24h<br>
+        ¿Prefieres escribirnos directamente? <a href="mailto:admin@cspiwebs.com">admin@cspiwebs.com</a>
+      </p>
       <div class="form-success" id="form-success">
         ✓ Mensaje enviado correctamente
         <p>Te respondemos en menos de 24 horas.</p>
@@ -815,6 +957,11 @@
 </section>
 
 </main>
+
+<div class="mobile-cta-sticky" id="mobile-cta" role="complementary" aria-label="Solicitar presupuesto">
+  <p class="mobile-cta-text">¿Tu negocio necesita web?</p>
+  <a href="#contacto" class="mobile-cta-btn">Presupuesto gratis →</a>
+</div>
 
 <footer role="contentinfo">
   <div class="footer-logo">
@@ -856,6 +1003,16 @@
 
   // Año dinámico en footer
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Ocultar CTA sticky cuando el contacto está visible
+  const mobileCta = document.getElementById('mobile-cta');
+  if (mobileCta) {
+    const ctaObserver = new IntersectionObserver(
+      (entries) => { mobileCta.style.display = entries[0].isIntersecting ? 'none' : ''; },
+      { threshold: 0.1 }
+    );
+    ctaObserver.observe(document.getElementById('contacto'));
+  }
 
   // 3. ENVÍO FORMULARIO → Formspree
   document.getElementById('submit-btn').addEventListener('click', async function() {
