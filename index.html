@@ -1239,17 +1239,15 @@
           body: JSON.stringify({ messages: chatHistory })
         });
         if (!res.ok) throw new Error();
-        const data = await res.json();
+        let data;
+        try { data = await res.json(); } catch { data = {}; }
         if (!res.ok) throw new Error(data.error || 'HTTP ' + res.status);
         chatHistory.push({ role: 'model', parts: [{ text: data.reply }] });
         typingEl.classList.remove('visible');
         appendMsg(data.reply, 'bot');
       } catch (err) {
         typingEl.classList.remove('visible');
-        const msg = err.message && err.message !== 'Failed to fetch'
-          ? 'Error: ' + err.message
-          : 'Lo siento, ha habido un error. Escríbenos a admin@cspiwebs.com';
-        appendMsg(msg, 'bot');
+        appendMsg('DBG: ' + (err.message || 'sin mensaje'), 'bot');
       }
       sendBtn.disabled = false;
       input.focus();
