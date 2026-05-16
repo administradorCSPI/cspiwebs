@@ -251,7 +251,8 @@
     border-radius: 50%;
     background: radial-gradient(circle, rgba(110,231,183,0.04) 0%, transparent 70%);
     pointer-events: none;
-    transform: translate(-50%, -50%);
+    top: 0; left: 0;
+    will-change: transform;
     z-index: 0;
     transition: opacity 0.3s;
   }
@@ -457,6 +458,20 @@
   .faq-item[open] .faq-question::after { content: '−'; }
   .faq-answer { padding: 0 1.5rem 1.1rem; font-size: 0.855rem; color: var(--muted); line-height: 1.75; }
 
+  /* PERFORMANCE */
+  #portfolio, #precios, #faq, #contacto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -484,7 +499,12 @@
 <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <nav aria-label="Navegación principal">
-  <div class="nav-logo"><img src="transparent-logo.png" alt="CSPI · Diseño web en Madrid" width="36" height="36" fetchpriority="high"></div>
+  <div class="nav-logo">
+    <picture>
+      <source srcset="logo-nav.webp" type="image/webp">
+      <img src="logo-nav.png" alt="CSPI · Diseño web en Madrid" width="36" height="36" fetchpriority="high">
+    </picture>
+  </div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#zonas">Zonas</a></li>
@@ -797,7 +817,12 @@
 </main>
 
 <footer role="contentinfo">
-  <div class="footer-logo"><img src="transparent-logo.png" alt="CSPI" width="28" height="28" loading="lazy"></div>
+  <div class="footer-logo">
+    <picture>
+      <source srcset="logo-footer.webp" type="image/webp">
+      <img src="logo-footer.png" alt="CSPI" width="28" height="28" loading="lazy">
+    </picture>
+  </div>
   <p>© <span id="year"></span> CSPI · Diseño web en Madrid</p>
   <p>Hecho con código real, no con plantillas.</p>
 </footer>
@@ -823,12 +848,11 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => navObserver.observe(s));
 
-  // Cursor glow
+  // Cursor glow — transform en lugar de left/top para evitar layout reflow
   const cursorGlow = document.getElementById('cursor-glow');
   document.addEventListener('mousemove', (e) => {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top = e.clientY + 'px';
-  });
+    cursorGlow.style.transform = `translate(${e.clientX - 150}px, ${e.clientY - 150}px)`;
+  }, { passive: true });
 
   // Año dinámico en footer
   document.getElementById('year').textContent = new Date().getFullYear();
