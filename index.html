@@ -7,15 +7,53 @@
 <meta name="description" content="Diseño y desarrollo web profesional para negocios locales en Madrid. Entrega en 1 semana, precio fijo y código real. Presupuesto gratuito sin compromiso.">
 <meta name="keywords" content="diseño web madrid, desarrollo web madrid, paginas web negocios, web profesional madrid, agencia web madrid">
 <meta name="author" content="CSPI">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0B">
+<meta name="geo.region" content="ES-MD">
+<meta name="geo.placename" content="Madrid">
+<link rel="canonical" href="https://cspiwebs.com">
 <meta property="og:title" content="CSPI · Diseño Web Profesional en Madrid">
 <meta property="og:description" content="Webs profesionales para negocios locales en Madrid. Entrega en 1 semana. Presupuesto gratuito.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://cspi.es">
+<meta property="og:url" content="https://cspiwebs.com">
+<meta property="og:image" content="https://cspiwebs.com/transparent-logo.png">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="CSPI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="CSPI · Diseño Web en Madrid">
 <meta name="twitter:description" content="Webs profesionales para negocios locales en Madrid. Entrega en 1 semana.">
+<meta name="twitter:image" content="https://cspiwebs.com/transparent-logo.png">
 <link rel="icon" type="image/png" href="transparent-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "CSPI",
+  "description": "Diseño y desarrollo web profesional para negocios locales en Madrid. Entrega en 1 semana.",
+  "url": "https://cspiwebs.com",
+  "logo": "https://cspiwebs.com/transparent-logo.png",
+  "email": "admin@cspiwebs.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES"
+  },
+  "areaServed": "Madrid",
+  "priceRange": "€€",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de diseño web",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diseño y desarrollo web"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Gestión de redes sociales"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO básico y avanzado"}}
+    ]
+  }
+}
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -319,17 +357,17 @@
 </style>
 </head>
 <body>
-<div class="cursor-glow" id="cursor-glow"></div>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <nav aria-label="Navegación principal">
-  <div class="nav-logo"><img src="transparent-logo.png" alt="CSPI"></div>
+  <div class="nav-logo"><img src="transparent-logo.png" alt="CSPI · Diseño web en Madrid" width="36" height="36" fetchpriority="high"></div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#precios">Precios</a></li>
   </ul>
-  <a href="#contacto" class="nav-cta">Hablemos →</a>
+  <a href="#contacto" class="nav-cta" aria-label="Ir al formulario de contacto">Hablemos →</a>
 </nav>
 
 <header class="hero">
@@ -357,19 +395,19 @@
   <p class="section-sub">Sin agencias intermediarias ni presupuestos inflados. Trato directo, precio justo.</p>
   <div class="services-grid fade-in">
     <div class="service-card">
-      <div class="service-icon">🌐</div>
+      <div class="service-icon" aria-hidden="true">🌐</div>
       <h3>Diseño y desarrollo web</h3>
       <p>Webs a medida, rápidas y con código limpio. Sin plantillas genéricas. Cada web refleja la identidad de tu negocio.</p>
       <div class="service-tag">Entrega en 1 semana</div>
     </div>
     <div class="service-card">
-      <div class="service-icon">📱</div>
+      <div class="service-icon" aria-hidden="true">📱</div>
       <h3>Redes sociales</h3>
       <p>Creación y optimización de perfiles en Instagram, LinkedIn y Google Business. Presencia coherente en todos los canales.</p>
       <div class="service-tag">Pack completo disponible</div>
     </div>
     <div class="service-card">
-      <div class="service-icon">🔍</div>
+      <div class="service-icon" aria-hidden="true">🔍</div>
       <h3>SEO básico</h3>
       <p>Optimización para que Google te encuentre. Palabras clave, meta etiquetas y velocidad desde el día uno.</p>
       <div class="service-tag">Incluido en toda web</div>
@@ -430,7 +468,7 @@
       <div class="portfolio-info">
         <h4>Camacho Maciá Arquitectos</h4>
         <p>Estudio de arquitectura · Madrid · 2025</p>
-        <a href="https://camachomaciaarquitectos.com" target="_blank" rel="noopener noreferrer">Ver web en vivo →</a>
+        <a href="https://camachomaciaarquitectos.com" target="_blank" rel="noopener noreferrer" aria-label="Ver web de Camacho Maciá Arquitectos (abre en nueva pestaña)">Ver web en vivo →</a>
       </div>
     </div>
     <div class="portfolio-card" style="opacity:0.5">
@@ -541,7 +579,7 @@
         </select>
       </div>
       <div class="form-group"><label for="mensaje">Cuéntanos un poco más</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="¿Qué tipo de negocio tienes? ¿Tienes ya algo online?"></textarea></div>
-      <button class="submit-btn" id="submit-btn">Solicitar presupuesto gratuito →</button>
+      <button class="submit-btn" id="submit-btn" type="button" aria-label="Enviar solicitud de presupuesto gratuito">Solicitar presupuesto gratuito →</button>
       <div class="form-success" id="form-success">
         ✓ Mensaje enviado correctamente
         <p>Te respondemos en menos de 24 horas.</p>
@@ -553,7 +591,7 @@
 </main>
 
 <footer role="contentinfo">
-  <div class="footer-logo"><img src="transparent-logo.png" alt="CSPI"></div>
+  <div class="footer-logo"><img src="transparent-logo.png" alt="CSPI" width="28" height="28" loading="lazy"></div>
   <p>© <span id="year"></span> CSPI · Diseño web en Madrid</p>
   <p>Hecho con código real, no con plantillas.</p>
 </footer>
