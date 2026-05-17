@@ -1,9 +1,0 @@
-{
-  "outputDirectory": ".",
-  "functions": {
-    "api/chat.js": {
-      "memory": 128,
-      "maxDuration": 15
-    }
-  }
-}
