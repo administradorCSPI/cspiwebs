@@ -60,15 +60,16 @@ exports.handler = async (event) => {
       return { statusCode: 200, headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ok: false, reason: 'GEMINI_API_KEY not set in Netlify env vars' }) };
     }
-    const probe = await tryModel(apiKey, MODELS[0], [{ role: 'user', parts: [{ text: 'di hola en una palabra' }] }]);
+    const results = {};
+    for (const m of MODELS) {
+      const probe = await tryModel(apiKey, m, [{ role: 'user', parts: [{ text: 'di hola en una palabra' }] }]);
+      results[m] = probe.reply ? 'OK: ' + probe.reply : 'FAIL: ' + probe.error;
+      if (probe.reply) break;
+    }
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(
-        probe.reply
-          ? { ok: true, model: MODELS[0], reply: probe.reply }
-          : { ok: false, model: MODELS[0], error: probe.error }
-      )
+      body: JSON.stringify({ results })
     };
   }
 
