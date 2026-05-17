@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="CSPI · Diseño Web en Madrid">
 <meta name="twitter:description" content="Webs profesionales para negocios locales en Madrid. Entrega en 1 semana.">
 <meta name="twitter:image" content="https://cspiwebs.com/transparent-logo.png">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%230A0A0B'/><polygon points='50,12 88,50 50,88 12,50' fill='%236EE7B7'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
@@ -159,16 +159,16 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #09090B;
+    --bg: #0A0A0B;
     --bg2: #111113;
     --bg3: #18181B;
-    --border: rgba(255,255,255,0.06);
-    --border2: rgba(255,255,255,0.1);
-    --text: #FAFAFA;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #F4F4F5;
     --muted: #71717A;
-    --accent: #2DD4BF;
-    --accent-dim: rgba(45,212,191,0.08);
-    --accent-dim2: rgba(45,212,191,0.04);
+    --accent: #6EE7B7;
+    --accent-dim: rgba(110,231,183,0.1);
+    --accent-dim2: rgba(110,231,183,0.06);
   }
   body {
     background: var(--bg);
@@ -177,8 +177,22 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
   }
-  nav, header, main, footer { position: relative; }
+  /* Máscara para que la cuadrícula se desvanezca suavemente hacia abajo */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, transparent 40%, var(--bg) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Todo el contenido por encima del overlay */
+  nav, header, main, footer { position: relative; z-index: 1; }
   html { scroll-behavior: smooth; }
 
   /* NAV */
@@ -209,6 +223,92 @@
     position: relative; overflow: hidden;
   }
 
+  /* Orbs de luz animados */
+  .hero::before {
+    content: ''; position: absolute; top: 20%; left: 20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(110,231,183,0.06) 0%, transparent 65%);
+    pointer-events: none;
+    animation: orbFloat 8s ease-in-out infinite;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 10%; right: 15%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(110,231,183,0.04) 0%, transparent 65%);
+    pointer-events: none;
+    animation: orbFloat 11s ease-in-out infinite reverse;
+  }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.97); }
+  }
+
+  /* Cursor glow */
+  .cursor-glow {
+    position: fixed;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(110,231,183,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    top: 0; left: 0;
+    will-change: transform;
+    z-index: 0;
+    transition: opacity 0.3s;
+  }
+
+  /* === LAVA LAMP === */
+  @keyframes lavaGlow {
+    0%   { text-shadow: 0 0 4px rgba(110,231,183,0.2), 0 0 8px rgba(110,231,183,0.1); filter: brightness(1); }
+    25%  { text-shadow: 0 0 8px rgba(110,231,183,0.4), 0 0 18px rgba(110,231,183,0.18), 0 0 32px rgba(110,231,183,0.08); filter: brightness(1.08); }
+    50%  { text-shadow: 0 0 3px rgba(110,231,183,0.15), 0 0 6px rgba(110,231,183,0.08); filter: brightness(0.97); }
+    75%  { text-shadow: 0 0 10px rgba(110,231,183,0.45), 0 0 22px rgba(110,231,183,0.2), 0 0 40px rgba(110,231,183,0.1); filter: brightness(1.1); }
+    100% { text-shadow: 0 0 4px rgba(110,231,183,0.2), 0 0 8px rgba(110,231,183,0.1); filter: brightness(1); }
+  }
+  @keyframes lavaGlowBox {
+    0%   { box-shadow: 0 0 4px rgba(110,231,183,0.12), 0 0 0px rgba(110,231,183,0); }
+    25%  { box-shadow: 0 0 10px rgba(110,231,183,0.28), 0 0 20px rgba(110,231,183,0.1); }
+    50%  { box-shadow: 0 0 3px rgba(110,231,183,0.08), 0 0 0px rgba(110,231,183,0); }
+    75%  { box-shadow: 0 0 14px rgba(110,231,183,0.32), 0 0 28px rgba(110,231,183,0.12); }
+    100% { box-shadow: 0 0 4px rgba(110,231,183,0.12), 0 0 0px rgba(110,231,183,0); }
+  }
+
+  /* Texto verde → lava text glow */
+  h1 em,
+  .stat-num span,
+  .section-label,
+  .service-tag,
+  .step-num,
+  .portfolio-info a,
+  .price-features li::before,
+  .contact-dot,
+  .nav-links a.active,
+  .form-success {
+    animation: lavaGlow 4s ease-in-out infinite;
+  }
+  /* Timings distintos para efecto orgánico */
+  .stat-num span         { animation-delay: 0.5s; animation-duration: 3.5s; }
+  .section-label         { animation-delay: 1s;   animation-duration: 5s; }
+  .service-tag           { animation-delay: 1.5s; animation-duration: 4.5s; }
+  .step-num              { animation-delay: 0.8s; animation-duration: 3.8s; }
+  .portfolio-info a      { animation-delay: 1.2s; animation-duration: 4.2s; }
+  .price-features li::before { animation-delay: 0.3s; animation-duration: 3.2s; }
+
+  /* Elementos con fondo/borde verde → lava box glow */
+  .hero-badge,
+  .nav-cta,
+  .btn-primary,
+  .price-btn.primary,
+  .submit-btn,
+  .service-icon,
+  .featured-badge {
+    animation: lavaGlowBox 4s ease-in-out infinite;
+  }
+  .nav-cta        { animation-delay: 0.6s; animation-duration: 4.8s; }
+  .btn-primary    { animation-delay: 1.1s; animation-duration: 3.6s; }
+  .hero-badge     { animation-delay: 0.4s; animation-duration: 5.2s; }
+  .submit-btn     { animation-delay: 0.9s; animation-duration: 4.1s; }
+  .featured-badge { animation-delay: 1.3s; animation-duration: 3.9s; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: var(--accent-dim); border: 1px solid rgba(110,231,183,0.2);
@@ -457,8 +557,10 @@
 </style>
 </head>
 <body>
+<div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
 <nav aria-label="Navegación principal">
-  <div class="nav-logo"><img src="favicon.png" alt="CSPI"></div>
+  <div class="nav-logo" aria-hidden="true"></div>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
@@ -858,7 +960,7 @@
 </div>
 
 <footer role="contentinfo">
-  <div class="footer-logo"><img src="logo.png" alt="CSPI"></div>
+  <div class="footer-logo"><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.02em">CSPI</span></div>
   <p>© <span id="year"></span> CSPI · Diseño web en Madrid</p>
   <p>Hecho con código real, no con plantillas.</p>
 </footer>
@@ -884,6 +986,12 @@
     });
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(s => navObserver.observe(s));
+
+  // Cursor glow — transform en lugar de left/top para evitar layout reflow
+  const cursorGlow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', (e) => {
+    cursorGlow.style.transform = `translate(${e.clientX - 150}px, ${e.clientY - 150}px)`;
+  }, { passive: true });
 
   // Año dinámico en footer
   document.getElementById('year').textContent = new Date().getFullYear();
