@@ -7,6 +7,13 @@
 [context.production.environment]
   NODE_VERSION = "18"
 
+# Canonical domain: www → non-www (301 permanent)
+[[redirects]]
+  from = "https://www.cspiwebs.com/*"
+  to = "https://cspiwebs.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/api/chat"
   to = "/.netlify/functions/chat"
