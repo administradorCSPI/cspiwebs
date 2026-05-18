@@ -27,6 +27,13 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains"
 
+# ICO favicon
+[[headers]]
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+    Content-Type = "image/x-icon"
+
 # Long-term cache for hashed/versioned assets
 [[headers]]
   for = "/*.webp"
