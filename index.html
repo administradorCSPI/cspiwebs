@@ -28,8 +28,11 @@
 <meta name="twitter:image:alt" content="CSPI · Agencia de diseño web en Madrid">
 <meta name="twitter:image" content="https://cspiwebs.com/og-image.png">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231C1F26'/><polygon points='50,12 88,50 50,88 12,50' fill='%23FF6B6B'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
@@ -40,6 +43,7 @@
   "url": "https://cspiwebs.com",
   "logo": "https://cspiwebs.com/transparent-logo.png",
   "image": "https://cspiwebs.com/transparent-logo.png",
+  "telephone": "+34652870405",
   "email": "admin@cspiwebs.com",
   "address": {
     "@type": "PostalAddress",
@@ -523,6 +527,30 @@
   .check-label a:hover { opacity: 0.8; }
   .check-label input[type="checkbox"].error { outline: 2px solid rgba(239,68,68,0.5); border-radius: 2px; }
 
+  /* COOKIE BANNER */
+  .cookie-banner {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+    backdrop-filter: blur(12px);
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+    flex-wrap: wrap;
+  }
+  .cookie-banner.visible { transform: translateY(0); }
+  .cookie-banner p { font-size: 0.8rem; color: var(--muted); line-height: 1.55; flex: 1; min-width: 200px; margin: 0; }
+  .cookie-banner a { color: var(--accent); text-decoration: underline; }
+  .cookie-banner-actions { display: flex; gap: 0.6rem; flex-shrink: 0; }
+  .cookie-btn { padding: 0.45rem 1.1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; border: 1px solid var(--border2); background: transparent; color: var(--text); transition: background 0.2s; }
+  .cookie-btn:hover { background: rgba(255,255,255,0.06); }
+  .cookie-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .cookie-btn.primary:hover { opacity: 0.88; }
+  @media (max-width: 768px) {
+    .cookie-banner { padding: 1rem 1.25rem; bottom: 4.5rem; }
+  }
+
   /* HAMBURGER */
   .nav-hamburger {
     display: none;
@@ -873,26 +901,18 @@
         <a href="https://camachomaciaarquitectos.com" target="_blank" rel="noopener noreferrer" aria-label="Ver web de Camacho Maciá Arquitectos (abre en nueva pestaña)">Ver web en vivo →</a>
       </div>
     </div>
-    <div class="portfolio-card" style="opacity:0.5">
-      <div class="portfolio-img next">
-        <div class="portfolio-mockup">
-          <div class="mockup-bar">
-            <div class="dot" style="background:#8A8D99;opacity:0.3"></div>
-            <div class="dot" style="background:#8A8D99;opacity:0.3"></div>
-            <div class="dot" style="background:#8A8D99;opacity:0.3"></div>
-          </div>
-          <div class="mockup-content">
-            <div class="mockup-line short"></div>
-            <div class="mockup-line med"></div>
-            <div class="mockup-line short"></div>
-            <div class="mockup-line"></div>
-          </div>
+    <div class="portfolio-card portfolio-next-card">
+      <div class="portfolio-img next" style="flex-direction:column;gap:1rem;padding:1.5rem;text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:var(--accent-dim);border:1px solid rgba(255,107,107,0.22);display:flex;align-items:center;justify-content:center;margin:0 auto;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
+        <p style="font-family:'Syne',sans-serif;font-size:0.9rem;font-weight:700;color:var(--text);margin:0">¿Tu negocio es el próximo?</p>
+        <p style="font-size:0.78rem;color:var(--muted);margin:0;max-width:200px">Diseñamos tu web en 7 días. Consulta gratuita sin compromiso.</p>
       </div>
       <div class="portfolio-info">
-        <h4>Próximo proyecto</h4>
-        <p>Tu negocio podría estar aquí</p>
-        <a href="#contacto">Hablemos →</a>
+        <h4>Tu proyecto aquí</h4>
+        <p>Madrid · 2026</p>
+        <a href="#formulario">Pedir presupuesto gratis →</a>
       </div>
     </div>
   </div>
@@ -1078,6 +1098,13 @@
 
 </main>
 
+<div class="cookie-banner" id="cookie-banner" role="region" aria-label="Aviso de cookies" aria-live="polite">
+  <p>Usamos Google Fonts, que puede transferir tu dirección IP a Google (EE.&nbsp;UU.). No usamos cookies de seguimiento propias. <a href="privacidad.html" target="_blank" rel="noopener">Más información</a>.</p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-btn primary" id="cookie-accept">Entendido</button>
+  </div>
+</div>
+
 <a href="https://wa.me/34652870405?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n%20sobre%20dise%C3%B1o%20web" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
@@ -1095,6 +1122,18 @@
 
 
 <script>
+  // COOKIE BANNER
+  (function() {
+    if (!localStorage.getItem('cookie_ok')) {
+      const banner = document.getElementById('cookie-banner');
+      setTimeout(() => banner.classList.add('visible'), 800);
+      document.getElementById('cookie-accept').addEventListener('click', () => {
+        banner.classList.remove('visible');
+        localStorage.setItem('cookie_ok', '1');
+      });
+    }
+  })();
+
   // HAMBURGER MENU
   const hamburger = document.getElementById('nav-hamburger');
   const navMenu = document.querySelector('.nav-links');

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada | CSPI</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231C1F26'/><polygon points='50,12 88,50 50,88 12,50' fill='%23FF6B6B'/></svg>">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #1C1F26; --bg2: #252830; --border: rgba(255,255,255,0.07);
+    --text: #F0F0F0; --muted: #8A8D99; --accent: #FF6B6B;
+    --accent-dim: rgba(255,107,107,0.12);
+  }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh; display: flex; flex-direction: column;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, transparent 40%, var(--bg) 100%);
+    pointer-events: none;
+  }
+  nav {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(28,31,38,0.92); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+  main {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 4rem 2rem; text-align: center; position: relative; z-index: 1;
+  }
+  .content { max-width: 480px; }
+  .error-code {
+    font-family: 'Syne', sans-serif; font-size: clamp(5rem, 18vw, 9rem);
+    font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+    color: var(--accent); opacity: 0.18; margin-bottom: -1.5rem;
+    user-select: none;
+  }
+  h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 700; letter-spacing: -0.025em; margin-bottom: 0.75rem;
+  }
+  p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; margin-bottom: 2rem; }
+  .actions { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff; padding: 0.75rem 1.6rem;
+    border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+    text-decoration: none; font-family: 'DM Sans', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    background: transparent; color: var(--text); padding: 0.75rem 1.6rem;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,0.13);
+    font-size: 0.875rem; text-decoration: none; font-family: 'DM Sans', sans-serif;
+    transition: background 0.2s;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.04); }
+  footer {
+    position: relative; z-index: 1;
+    border-top: 1px solid var(--border); padding: 1.25rem 3rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+  }
+  footer p { font-size: 0.73rem; color: var(--muted); }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    footer { padding: 1.25rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">CSPI</a>
+  <a href="index.html" style="font-size:0.82rem;color:var(--muted);text-decoration:none;">← Volver al inicio</a>
+</nav>
+<main>
+  <div class="content">
+    <div class="error-code" aria-hidden="true">404</div>
+    <h1>Página no encontrada</h1>
+    <p>La página que buscas no existe o ha sido movida. Pero tu web ideal sí existe — te la hacemos en 7 días.</p>
+    <div class="actions">
+      <a href="index.html" class="btn-primary">Volver al inicio</a>
+      <a href="index.html#formulario" class="btn-ghost">Pedir presupuesto →</a>
+    </div>
+  </div>
+</main>
+<footer>
+  <p><strong>CSPI</strong> · Diseño web en Madrid</p>
+  <p><a href="privacidad.html">Política de privacidad</a></p>
+  <p>© <span id="year"></span> CSPI</p>
+</footer>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
