@@ -358,7 +358,7 @@
   .portfolio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
   .portfolio-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
   .portfolio-card:hover { border-color: rgba(255,107,107,0.22); transform: translateY(-2px); }
-  .portfolio-img { width: 100%; height: 150px; display: flex; align-items: center; justify-content: center; }
+  .portfolio-img { width: 100%; height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .portfolio-img.arch { background: linear-gradient(135deg, #1f1418, #261820); }
   .portfolio-img.next { background: linear-gradient(135deg, #1a1c22, #20222a); }
   .portfolio-mockup { width: 82%; height: 110px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 7px; overflow: hidden; }
@@ -474,7 +474,7 @@
   /* CASO DE ÉXITO */
   .caso-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; margin-top: 2rem; transition: border-color 0.2s; }
   .caso-card:hover { border-color: rgba(255,107,107,0.18); }
-  .caso-visual { background: linear-gradient(135deg, #231820, #2a1c22); display: flex; align-items: center; justify-content: center; min-height: 220px; }
+  .caso-visual { background: linear-gradient(135deg, #231820, #2a1c22); display: flex; align-items: center; justify-content: center; min-height: 280px; overflow: hidden; }
   .caso-body { padding: 2rem; }
   .caso-sector { font-size: 0.77rem; color: var(--muted); margin-bottom: 1.25rem; }
   .caso-bloque { margin-bottom: 1rem; }
@@ -495,6 +495,33 @@
   .form-reassurance a { color: var(--accent); text-decoration: none; }
   .form-reassurance a:hover { text-decoration: underline; }
 
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid var(--border2);
+    border-radius: 6px;
+    padding: 0.45rem 0.5rem;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.25s, opacity 0.25s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
   /* MOBILE STICKY CTA */
   .mobile-cta-sticky { display: none; }
 
@@ -512,29 +539,76 @@
     html { scroll-behavior: auto; }
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; }
-    .nav-cta { padding: 0.45rem 1rem; font-size: 0.8rem; }
+  /* RESPONSIVE — TABLET (≤ 1024px) */
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { gap: 1.25rem; }
 
-    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 3rem 2rem; }
+
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-grid .price-card:last-child { grid-column: 1 / -1; max-width: 360px; margin: 0 auto; width: 100%; }
+
+    .contact-wrapper { gap: 2rem; }
+
+    .portfolio-img { height: 200px; }
+
+    .caso-visual { min-height: 260px; }
+
+    footer { padding: 1.5rem 2rem; }
+  }
+
+  /* RESPONSIVE — MÓVIL (≤ 768px) */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-cta { padding: 0.45rem 1rem; font-size: 0.8rem; }
+    .nav-hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0; right: 0;
+      background: rgba(28,31,38,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border2);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-bottom: 1px solid var(--border); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-links a { display: block; padding: 0.9rem 1.5rem; font-size: 0.95rem; color: var(--text); }
+
+    .hero { padding: 6rem 1.25rem 3rem; }
+
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 2.5rem; }
+
+    section { padding: 2.5rem 1.25rem; }
+
+    .services-grid { grid-template-columns: 1fr; }
 
     .process-wrapper { grid-template-columns: 1fr; }
+
     .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-img { height: 220px; }
+
     .pricing-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pricing-grid .price-card:last-child { grid-column: auto; max-width: none; }
+
+    .garantias-grid { grid-template-columns: 1fr; }
+
+    .caso-card { grid-template-columns: 1fr; }
+    .caso-visual { min-height: 220px; }
 
     .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }
 
-    section { padding: 2.5rem 1.5rem; }
+    .faq-list { max-width: 100%; }
 
     footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
-
-    .hero-stats { gap: 1.5rem; }
-    .garantias-grid { grid-template-columns: 1fr; }
-    .caso-card { grid-template-columns: 1fr; }
-    .caso-visual { min-height: 140px; }
 
     /* Mobile sticky CTA */
     .mobile-cta-sticky {
@@ -554,6 +628,28 @@
     .mobile-cta-btn { background: var(--accent); color: #fff; padding: 0.55rem 1.1rem; border-radius: 6px; font-size: 0.8rem; font-weight: 700; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
   }
 
+  /* RESPONSIVE — MÓVIL PEQUEÑO (≤ 480px) */
+  @media (max-width: 480px) {
+    section { padding: 2rem 1rem; }
+
+    .hero { padding: 5.5rem 1rem 2.5rem; }
+    .hero-sub { font-size: 0.95rem; }
+    .hero-trust { gap: 0.75rem; }
+    .hero-stats { gap: 1rem; }
+    .stat-num { font-size: 1.5rem; }
+
+    .btn-primary, .btn-ghost { padding: 0.75rem 1.4rem; font-size: 0.85rem; }
+
+    .faq-question { padding: 0.9rem 1.1rem; font-size: 0.88rem; }
+    .faq-answer { padding: 0 1.1rem 0.9rem; }
+
+    .contact-form { padding: 1.25rem; }
+    .caso-body { padding: 1.25rem; }
+
+    footer { padding: 1.25rem 1rem; }
+    footer p { font-size: 0.7rem; }
+  }
+
 </style>
 </head>
 <body>
@@ -569,6 +665,9 @@
     <li><a href="#zonas">Zonas</a></li>
   </ul>
   <a href="#contacto" class="nav-cta" aria-label="Ir al formulario de contacto">Hablemos →</a>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <header class="hero">
@@ -941,6 +1040,22 @@
 
 
 <script>
+  // HAMBURGER MENU
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.querySelector('.nav-links');
+  hamburger.addEventListener('click', () => {
+    const open = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   // 1. ANIMACIONES DE ENTRADA
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
