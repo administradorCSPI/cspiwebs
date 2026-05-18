@@ -193,7 +193,7 @@
   }
   /* Todo el contenido por encima del overlay */
   nav, header, main, footer { position: relative; z-index: 1; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
   /* NAV */
   nav {
@@ -675,7 +675,7 @@
   <h1>Tu negocio en Madrid merece<br>una web <em>que venda</em></h1>
   <p class="hero-sub">Creamos páginas web profesionales para negocios locales en Madrid. Diseño a medida, código real y entrega en 7 días. Más clientes desde el primer mes.</p>
   <div class="hero-actions">
-    <a href="#contacto" class="btn-primary">Presupuesto gratis en 24h →</a>
+    <a href="#formulario" class="btn-primary">Presupuesto gratis en 24h →</a>
     <a href="#portfolio" class="btn-ghost">Ver trabajos</a>
   </div>
   <div class="hero-trust" aria-label="Garantías">
@@ -805,7 +805,7 @@
       <p><strong>Atención presencial disponible en Madrid.</strong> Si prefieres reunirte en persona para hablar de tu proyecto web, lo organizamos sin problema. Si estás en otro municipio de la Comunidad, la videollamada funciona igual de bien.</p>
     </div>
     <div class="zonas-cta">
-      <a href="#contacto" class="btn-primary">Consulta gratuita para tu negocio</a>
+      <a href="#formulario" class="btn-primary">Consulta gratuita para tu negocio</a>
       <a href="#precios" class="btn-ghost">Ver precios →</a>
     </div>
   </div>
@@ -883,7 +883,7 @@
   </div>
   <div class="caso-footer">
     <p><strong>¿Tu negocio podría ser el siguiente caso de éxito?</strong> Cuéntanos qué necesitas — la consulta es gratis.</p>
-    <a href="#contacto" class="btn-primary">Hablemos de tu proyecto</a>
+    <a href="#formulario" class="btn-primary">Hablemos de tu proyecto</a>
   </div>
 </section>
 
@@ -905,7 +905,7 @@
         <li>Formulario de contacto</li>
         <li>Adaptado a móvil</li>
       </ul>
-      <a href="#contacto" class="price-btn">Solicitar</a>
+      <a href="#formulario" class="price-btn">Solicitar</a>
     </div>
     <div class="price-card featured">
       <div class="featured-badge">MÁS POPULAR</div>
@@ -920,7 +920,7 @@
         <li>Google Business optimizado</li>
         <li>1 mes de soporte incluido</li>
       </ul>
-      <a href="#contacto" class="price-btn primary">Solicitar</a>
+      <a href="#formulario" class="price-btn primary">Solicitar</a>
     </div>
     <div class="price-card">
       <div class="price-name">Completo</div>
@@ -934,10 +934,10 @@
         <li>Mantenimiento 3 meses</li>
         <li>Soporte prioritario</li>
       </ul>
-      <a href="#contacto" class="price-btn">Solicitar</a>
+      <a href="#formulario" class="price-btn">Solicitar</a>
     </div>
   </div>
-  <p class="pricing-note">Todos los planes incluyen revisiones ilimitadas, código en propiedad y sin permanencia. ¿No sabes cuál elegir? <a href="#contacto">Te asesoramos gratis →</a></p>
+  <p class="pricing-note">Todos los planes incluyen revisiones ilimitadas, código en propiedad y sin permanencia. ¿No sabes cuál elegir? <a href="#formulario">Te asesoramos gratis →</a></p>
 </section>
 
 <hr class="full-divider">
@@ -995,7 +995,7 @@
       <div class="contact-detail"><div class="contact-dot"></div><span><strong>Entrega garantizada</strong> en 7 días desde que nos envíes los materiales</span></div>
       <div class="contact-detail"><div class="contact-dot"></div><span><strong>Presupuesto gratuito</strong> y personalizado en menos de 24 horas</span></div>
     </div>
-    <div class="contact-form">
+    <div class="contact-form" id="formulario">
       <div class="form-row">
         <div class="form-group"><label for="nombre">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre"></div>
         <div class="form-group"><label for="negocio">Negocio</label><input id="negocio" name="negocio" type="text" placeholder="Nombre del negocio"></div>
@@ -1029,7 +1029,7 @@
 
 <div class="mobile-cta-sticky" id="mobile-cta" role="complementary" aria-label="Solicitar presupuesto">
   <p class="mobile-cta-text">¿Tu negocio necesita web?</p>
-  <a href="#contacto" class="mobile-cta-btn">Presupuesto gratis →</a>
+  <a href="#formulario" class="mobile-cta-btn">Presupuesto gratis →</a>
 </div>
 
 <footer role="contentinfo">
