@@ -224,12 +224,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     pointer-events: none;
     z-index: 0;
   }
-  /* DNA HELIX */
-  #spiral-bg {
-    position: fixed; inset: 0;
-    pointer-events: none; z-index: 0;
-  }
-
   /* Todo el contenido por encima del overlay */
   nav, header, main, footer { position: relative; z-index: 1; }
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -772,7 +766,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VTVZDPQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<canvas id="spiral-bg" aria-hidden="true"></canvas>
 <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <nav aria-label="Navegación principal">
@@ -1237,85 +1230,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     cursorGlow.style.transform = `translate(${e.clientX - 150}px, ${e.clientY - 150}px)`;
   }, { passive: true });
 
-  // DNA HELIX
-  (function() {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const canvas = document.getElementById('spiral-bg');
-    const ctx = canvas.getContext('2d');
-    let phase = 0;
-    let rafId = null;
-
-    function draw(ph) {
-      const W = canvas.width  = window.innerWidth;
-      const H = canvas.height = window.innerHeight;
-      const cx = W / 2;
-      const A  = Math.min(W * 0.055, 54);   // amplitude
-      const lam = 170;                        // px per full turn
-
-      ctx.clearRect(0, 0, W, H);
-
-      // Back strand (dimmer)
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(255,107,107,0.13)';
-      ctx.lineWidth = 1.5;
-      for (let y = 0; y <= H; y++) {
-        const x = cx - A * Math.sin((y / lam) * Math.PI * 2 + ph);
-        y === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      // Front strand (brighter)
-      ctx.beginPath();
-      ctx.strokeStyle = 'rgba(255,107,107,0.36)';
-      ctx.lineWidth = 1.5;
-      for (let y = 0; y <= H; y++) {
-        const x = cx + A * Math.sin((y / lam) * Math.PI * 2 + ph);
-        y === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      // Rungs — placed at peaks of the sine, move with phase
-      const baseY = lam / 4 - (ph * lam) / (Math.PI * 2);
-      const step  = lam / 2;
-      const n0    = Math.floor(-baseY / step) - 1;
-      const n1    = Math.ceil((H - baseY) / step) + 1;
-      for (let n = n0; n <= n1; n++) {
-        const y = baseY + n * step;
-        if (y < 0 || y > H) continue;
-        const sin = Math.sin((y / lam) * Math.PI * 2 + ph);
-        const x1  = cx + A * sin;
-        const x2  = cx - A * sin;
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(255,107,107,0.2)';
-        ctx.lineWidth = 1;
-        ctx.moveTo(x1, y);
-        ctx.lineTo(x2, y);
-        ctx.stroke();
-      }
-
-      // Vertical fade at top and bottom edges
-      ctx.globalCompositeOperation = 'destination-in';
-      const vg = ctx.createLinearGradient(0, 0, 0, H);
-      vg.addColorStop(0,    'rgba(0,0,0,0)');
-      vg.addColorStop(0.1,  'rgba(0,0,0,1)');
-      vg.addColorStop(0.9,  'rgba(0,0,0,1)');
-      vg.addColorStop(1,    'rgba(0,0,0,0)');
-      ctx.fillStyle = vg;
-      ctx.fillRect(0, 0, W, H);
-      ctx.globalCompositeOperation = 'source-over';
-    }
-
-    function onScroll() {
-      const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
-      phase = scrollMax > 0 ? (window.scrollY / scrollMax) * Math.PI * 8 : 0; // 4 full rotations
-      if (!rafId) rafId = requestAnimationFrame(() => { draw(phase); rafId = null; });
-    }
-
-    draw(0);
-    let resizeT;
-    window.addEventListener('resize', () => { clearTimeout(resizeT); resizeT = setTimeout(() => draw(phase), 100); }, { passive: true });
-    if (!reducedMotion) window.addEventListener('scroll', onScroll, { passive: true });
-  })();
 
   // Año dinámico en footer
   document.getElementById('year').textContent = new Date().getFullYear();
