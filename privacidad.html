@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad y Aviso Legal | CSPI</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://cspiwebs.com/privacidad.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #1C1F26;
+    --bg2: #252830;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #F0F0F0;
+    --muted: #8A8D99;
+    --accent: #FF6B6B;
+    --accent-dim: rgba(255,107,107,0.1);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(28,31,38,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+  .nav-back { font-size: 0.82rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+
+  .page-wrap { max-width: 760px; margin: 0 auto; padding: 3.5rem 2rem 5rem; }
+
+  .page-title { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.4rem; }
+  .page-date { font-size: 0.78rem; color: var(--muted); margin-bottom: 3rem; }
+
+  .toc { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 3rem; }
+  .toc p { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.6rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+  .toc ol { list-style: none; counter-reset: toc; display: flex; flex-direction: column; gap: 0.3rem; }
+  .toc ol li { counter-increment: toc; font-size: 0.83rem; }
+  .toc ol li::before { content: counter(toc) ". "; color: var(--accent); font-weight: 600; }
+  .toc a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .toc a:hover { color: var(--text); }
+
+  .policy-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+  .policy-section:last-child { border-bottom: none; }
+  .section-tag { font-size: 0.68rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  h2 { font-family: 'Syne', sans-serif; font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+  h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin: 1.5rem 0 0.5rem; color: var(--text); }
+  p { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.9rem; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--text); font-weight: 600; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  ul, ol { padding-left: 1.25rem; margin-bottom: 0.9rem; }
+  li { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.35rem; line-height: 1.6; }
+  .placeholder { background: rgba(255,107,107,0.08); border: 1px dashed rgba(255,107,107,0.3); border-radius: 4px; padding: 0.1rem 0.4rem; font-size: 0.8rem; color: var(--accent); font-family: monospace; }
+  .info-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; }
+  .info-box p { margin-bottom: 0.4rem; font-size: 0.83rem; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; }
+  footer p { font-size: 0.73rem; color: var(--muted); }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .page-wrap { padding: 2.5rem 1.25rem 4rem; }
+    footer { padding: 1.25rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">CSPI</a>
+  <a href="index.html" class="nav-back">← Volver al inicio</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="section-tag">Información legal</div>
+  <h1 class="page-title">Política de Privacidad, Aviso Legal y Cookies</h1>
+  <p class="page-date">Última actualización: mayo de 2026</p>
+
+  <nav class="toc" aria-label="Índice de contenidos">
+    <p>Índice</p>
+    <ol>
+      <li><a href="#aviso-legal">Aviso Legal</a></li>
+      <li><a href="#privacidad">Política de Privacidad</a></li>
+      <li><a href="#cookies">Política de Cookies</a></li>
+      <li><a href="#derechos">Tus derechos</a></li>
+    </ol>
+  </nav>
+
+  <!-- ─── 1. AVISO LEGAL ─── -->
+  <section class="policy-section" id="aviso-legal">
+    <div class="section-tag">1. Aviso Legal</div>
+    <h2>Identificación del titular</h2>
+
+    <p>En cumplimiento con el deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se facilitan los siguientes datos:</p>
+
+    <div class="info-box">
+      <p><strong>Denominación:</strong> CSPI</p>
+      <p><strong>NIF/CIF:</strong> <span class="placeholder">[COMPLETAR]</span></p>
+      <p><strong>Domicilio:</strong> <span class="placeholder">[COMPLETAR dirección completa]</span>, Madrid, España</p>
+      <p><strong>Correo electrónico:</strong> <a href="mailto:admin@cspiwebs.com">admin@cspiwebs.com</a></p>
+      <p><strong>Sitio web:</strong> <a href="https://cspiwebs.com">https://cspiwebs.com</a></p>
+    </div>
+
+    <h3>Objeto y ámbito de aplicación</h3>
+    <p>Las presentes condiciones regulan el acceso y uso del sitio web <strong>cspiwebs.com</strong> (en adelante, "el sitio web"), titularidad de CSPI. El acceso y uso del sitio web implica la aceptación plena de estas condiciones.</p>
+
+    <h3>Propiedad intelectual e industrial</h3>
+    <p>Todos los contenidos del sitio web —textos, imágenes, diseños, código fuente, logotipos y demás elementos— son propiedad de CSPI o de sus legítimos titulares, y están protegidos por las leyes de propiedad intelectual e industrial vigentes. Queda prohibida su reproducción, distribución o modificación sin autorización expresa.</p>
+
+    <h3>Responsabilidad</h3>
+    <p>CSPI no se hace responsable de los daños o perjuicios que pudieran derivarse del uso del sitio web, de interrupciones en el servicio por causas técnicas ajenas a su control, ni del contenido de sitios web de terceros enlazados desde este sitio.</p>
+
+    <h3>Legislación aplicable y jurisdicción</h3>
+    <p>Las presentes condiciones se rigen por la legislación española. Para la resolución de cualquier controversia, las partes se someten a los Juzgados y Tribunales de la ciudad de Madrid, salvo que la normativa aplicable establezca otro fuero.</p>
+  </section>
+
+  <!-- ─── 2. POLÍTICA DE PRIVACIDAD ─── -->
+  <section class="policy-section" id="privacidad">
+    <div class="section-tag">2. Política de Privacidad</div>
+    <h2>Tratamiento de datos personales</h2>
+
+    <p>En CSPI respetamos tu privacidad y tratamos tus datos de acuerdo con el <strong>Reglamento (UE) 2016/679 (RGPD)</strong> y la <strong>Ley Orgánica 3/2018 (LOPDGDD)</strong>.</p>
+
+    <h3>Responsable del tratamiento</h3>
+    <div class="info-box">
+      <p><strong>Identidad:</strong> CSPI</p>
+      <p><strong>NIF/CIF:</strong> <span class="placeholder">[COMPLETAR]</span></p>
+      <p><strong>Dirección:</strong> <span class="placeholder">[COMPLETAR]</span>, Madrid</p>
+      <p><strong>Contacto:</strong> <a href="mailto:admin@cspiwebs.com">admin@cspiwebs.com</a></p>
+    </div>
+
+    <h3>Datos que recogemos</h3>
+    <p>A través del formulario de contacto del sitio web, recogemos los siguientes datos:</p>
+    <ul>
+      <li><strong>Nombre y apellidos</strong></li>
+      <li><strong>Nombre del negocio</strong></li>
+      <li><strong>Dirección de correo electrónico</strong></li>
+      <li><strong>Tipo de servicio de interés</strong></li>
+      <li><strong>Mensaje libre</strong> con información adicional sobre el proyecto</li>
+    </ul>
+
+    <h3>Finalidad y base jurídica</h3>
+    <ul>
+      <li><strong>Atender tu solicitud de información o presupuesto</strong> — base jurídica: ejecución de medidas precontractuales a petición del interesado (Art. 6.1.b RGPD).</li>
+      <li><strong>Enviarte comunicaciones comerciales</strong> sobre nuestros servicios, si has dado tu consentimiento — base jurídica: consentimiento (Art. 6.1.a RGPD). Puedes retirar el consentimiento en cualquier momento.</li>
+    </ul>
+
+    <h3>Plazo de conservación</h3>
+    <p>Los datos se conservarán durante el tiempo necesario para atender tu solicitud y, en su caso, durante el plazo de prescripción de las acciones legales que pudieran derivarse (máximo 5 años), salvo que nos solicites su supresión antes.</p>
+
+    <h3>Destinatarios</h3>
+    <p>Los datos no se cederán a terceros salvo obligación legal. El formulario de contacto utiliza el servicio <strong>Formspree</strong> (<a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener">política de privacidad de Formspree</a>), que actúa como encargado del tratamiento y procesa los datos en servidores ubicados en Estados Unidos bajo cláusulas contractuales estándar aprobadas por la Comisión Europea.</p>
+
+    <h3>Transferencias internacionales</h3>
+    <p>La carga de tipografías desde <strong>Google Fonts</strong> (CDN de Google LLC, EE. UU.) implica que la dirección IP del visitante es enviada a los servidores de Google en cada visita. Puedes consultar la política de privacidad de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+  </section>
+
+  <!-- ─── 3. POLÍTICA DE COOKIES ─── -->
+  <section class="policy-section" id="cookies">
+    <div class="section-tag">3. Política de Cookies</div>
+    <h2>Uso de cookies y tecnologías similares</h2>
+
+    <p>Una cookie es un pequeño fichero que se almacena en tu dispositivo cuando visitas un sitio web. Este sitio web <strong>no utiliza cookies propias de seguimiento ni análisis</strong>.</p>
+
+    <h3>Cookies de terceros</h3>
+    <p>La carga de fuentes tipográficas a través de <strong>Google Fonts</strong> puede generar una transferencia de tu dirección IP a los servidores de Google LLC (Estados Unidos). Google puede establecer cookies técnicas asociadas a esta carga. No tenemos control sobre dichas cookies; te remitimos a la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">política de privacidad de Google</a>.</p>
+
+    <div class="info-box">
+      <p><strong>Proveedor:</strong> Google LLC (Google Fonts)</p>
+      <p><strong>Tipo:</strong> Técnica / Carga de recursos</p>
+      <p><strong>Dato transferido:</strong> Dirección IP del visitante</p>
+      <p><strong>Finalidad:</strong> Servir los archivos de tipografía Syne y DM Sans</p>
+      <p><strong>Más información:</strong> <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">developers.google.com/fonts/faq/privacy</a></p>
+    </div>
+
+    <h3>Cómo gestionar las cookies</h3>
+    <p>Puedes configurar tu navegador para bloquear o eliminar cookies. Ten en cuenta que bloquear todas las cookies puede afectar a la correcta visualización del sitio. Instrucciones para los navegadores principales:</p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+      <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+    </ul>
+  </section>
+
+  <!-- ─── 4. DERECHOS ─── -->
+  <section class="policy-section" id="derechos">
+    <div class="section-tag">4. Tus derechos</div>
+    <h2>Derechos de los interesados</h2>
+
+    <p>Conforme al RGPD y la LOPDGDD, tienes derecho a:</p>
+    <ul>
+      <li><strong>Acceso:</strong> saber qué datos tuyos tratamos.</li>
+      <li><strong>Rectificación:</strong> corregir datos inexactos o incompletos.</li>
+      <li><strong>Supresión ("derecho al olvido"):</strong> solicitar la eliminación de tus datos cuando ya no sean necesarios.</li>
+      <li><strong>Limitación del tratamiento:</strong> solicitar que se restrinja el uso de tus datos en determinadas circunstancias.</li>
+      <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y legible.</li>
+      <li><strong>Oposición:</strong> oponerte al tratamiento de tus datos para fines de comunicaciones comerciales.</li>
+      <li><strong>Retirar el consentimiento</strong> en cualquier momento, sin que ello afecte a la licitud del tratamiento previo.</li>
+    </ul>
+
+    <h3>Cómo ejercer tus derechos</h3>
+    <p>Puedes ejercer cualquiera de estos derechos enviando un correo electrónico a <a href="mailto:admin@cspiwebs.com">admin@cspiwebs.com</a>, indicando el derecho que deseas ejercer y adjuntando una copia de tu documento de identidad (o equivalente que acredite tu identidad).</p>
+
+    <h3>Reclamación ante la autoridad de control</h3>
+    <p>Si consideras que el tratamiento de tus datos no es conforme a la normativa, puedes presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong>: <a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>.</p>
+  </section>
+
+</div>
+
+<footer>
+  <p><strong>CSPI</strong> · Diseño web en Madrid</p>
+  <p><a href="index.html">← Volver al inicio</a></p>
+  <p>© <span id="year"></span> CSPI</p>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

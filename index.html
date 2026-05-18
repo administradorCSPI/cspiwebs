@@ -513,6 +513,14 @@
   .form-reassurance a { color: var(--accent); text-decoration: none; }
   .form-reassurance a:hover { text-decoration: underline; }
 
+  /* RGPD CHECKBOX */
+  .form-group-check { margin-bottom: 1rem; }
+  .check-label { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.8rem; color: var(--muted); cursor: pointer; line-height: 1.5; }
+  .check-label input[type="checkbox"] { width: auto; flex-shrink: 0; margin-top: 0.15rem; accent-color: var(--accent); }
+  .check-label a { color: var(--accent); text-decoration: underline; }
+  .check-label a:hover { opacity: 0.8; }
+  .check-label input[type="checkbox"].error { outline: 2px solid rgba(239,68,68,0.5); border-radius: 2px; }
+
   /* HAMBURGER */
   .nav-hamburger {
     display: none;
@@ -1031,6 +1039,12 @@
         </select>
       </div>
       <div class="form-group"><label for="mensaje">Cuéntanos un poco más</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="¿Qué tipo de negocio tienes? ¿Tienes ya algo online?"></textarea></div>
+      <div class="form-group form-group-check">
+        <label class="check-label">
+          <input type="checkbox" id="rgpd" name="rgpd">
+          <span>He leído y acepto la <a href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y autorizo el tratamiento de mis datos para gestionar mi solicitud.</span>
+        </label>
+      </div>
       <button class="submit-btn" id="submit-btn" type="button" aria-label="Enviar solicitud de presupuesto gratuito">Solicitar presupuesto gratuito →</button>
       <p class="form-reassurance">Sin compromiso · Sin spam · Respondemos en menos de 24h<br>
         ¿Prefieres escribirnos directamente? <a href="mailto:admin@cspiwebs.com">admin@cspiwebs.com</a>
@@ -1053,7 +1067,7 @@
 <footer role="contentinfo">
   <div class="footer-logo"><span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-0.02em">CSPI</span></div>
   <p>© <span id="year"></span> CSPI · Diseño web en Madrid</p>
-  <p>Hecho con código real, no con plantillas.</p>
+  <p><a href="privacidad.html" style="color:var(--muted);text-decoration:underline;font-size:0.75rem">Política de privacidad y aviso legal</a></p>
 </footer>
 
 
@@ -1115,7 +1129,7 @@
 
   // 3. ENVÍO FORMULARIO → Formspree
   document.getElementById('submit-btn').addEventListener('click', async function() {
-    const inputs = document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea');
+    const inputs = document.querySelectorAll('.contact-form input:not([type="checkbox"]), .contact-form select, .contact-form textarea');
     let valid = true;
     inputs.forEach(input => {
       const empty = !input.value.trim();
@@ -1123,6 +1137,9 @@
       if (empty || badEmail) { input.style.borderColor = 'rgba(239,68,68,0.5)'; valid = false; }
       else { input.style.borderColor = ''; }
     });
+    const rgpd = document.getElementById('rgpd');
+    if (!rgpd.checked) { rgpd.classList.add('error'); valid = false; }
+    else { rgpd.classList.remove('error'); }
     if (!valid) return;
 
     this.disabled = true;
