@@ -495,6 +495,16 @@
   .garantia-card h3 { font-family: 'Syne', sans-serif; font-size: 0.92rem; font-weight: 700; margin-bottom: 0.45rem; }
   .garantia-card p { font-size: 0.81rem; color: var(--muted); line-height: 1.65; }
 
+  /* EQUIPO */
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2rem; }
+  .team-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; transition: border-color 0.2s; }
+  .team-card:hover { border-color: rgba(255,107,107,0.22); }
+  .team-avatar { width: 52px; height: 52px; border-radius: 50%; background: var(--accent-dim); border: 1px solid rgba(255,107,107,0.22); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+  .team-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .team-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .team-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; } }
+
   /* CASO DE ÉXITO */
   .caso-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; display: grid; grid-template-columns: 1fr 1.5fr; margin-top: 2rem; transition: border-color 0.2s; }
   .caso-card:hover { border-color: rgba(255,107,107,0.18); }
@@ -815,6 +825,36 @@
       <div class="garantia-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
       <h3>El código es tuyo al 100%</h3>
       <p>No te atamos a ninguna suscripción. Entregamos el código fuente completo. Eres libre de cambiar de proveedor cuando quieras.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<section id="equipo" aria-labelledby="equipo-heading">
+  <div class="section-label">El equipo</div>
+  <h2 id="equipo-heading">Las personas detrás de CSPI</h2>
+  <p class="section-sub">Somos cuatro, nos conocemos de la carrera y tenemos formación en informática, ciberseguridad y desarrollo web. Eso significa que tu web no solo tiene buen diseño — también está construida con seguridad desde el primer día.</p>
+  <div class="team-grid fade-in">
+    <div class="team-card">
+      <div class="team-avatar" aria-hidden="true">C</div>
+      <h3>Carla</h3>
+      <p>Diseño web · UX · Ciberseguridad</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" aria-hidden="true">S</div>
+      <h3>Sergio</h3>
+      <p>Desarrollo web · Infraestructura · Seguridad</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" aria-hidden="true">P</div>
+      <h3>Pablo</h3>
+      <p>Desarrollo web · SEO · Ciberseguridad</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar" aria-hidden="true">I</div>
+      <h3>Izan</h3>
+      <p>Desarrollo web · Seguridad web · Redes</p>
     </div>
   </div>
 </section>
