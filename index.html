@@ -224,6 +224,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     pointer-events: none;
     z-index: 0;
   }
+  /* SPIRAL */
+  #spiral-bg {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 0;
+    will-change: transform;
+  }
+
   /* Todo el contenido por encima del overlay */
   nav, header, main, footer { position: relative; z-index: 1; }
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -766,6 +774,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VTVZDPQ"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<canvas id="spiral-bg" aria-hidden="true"></canvas>
 <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
 <nav aria-label="Navegación principal">
@@ -1229,6 +1238,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener('mousemove', (e) => {
     cursorGlow.style.transform = `translate(${e.clientX - 150}px, ${e.clientY - 150}px)`;
   }, { passive: true });
+
+  // SPIRAL BACKGROUND
+  (function() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const canvas = document.getElementById('spiral-bg');
+    const ctx = canvas.getContext('2d');
+    let rafId = null;
+
+    function draw() {
+      const size = Math.ceil(Math.max(window.innerWidth, window.innerHeight) * 1.6);
+      canvas.width = size;
+      canvas.height = size;
+      const cx = size / 2, cy = size / 2;
+      const maxR = size * 0.46;
+      const turns = 6;
+      const steps = 900;
+
+      ctx.clearRect(0, 0, size, size);
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(255,107,107,0.28)';
+      ctx.lineWidth = 1.2;
+
+      for (let i = 1; i <= steps; i++) {
+        const t = (i / steps) * turns * Math.PI * 2;
+        const r = (i / steps) * maxR;
+        const x = cx + r * Math.cos(t - Math.PI / 2);
+        const y = cy + r * Math.sin(t - Math.PI / 2);
+        i === 1 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Radial fade toward edges
+      ctx.globalCompositeOperation = 'destination-in';
+      const grad = ctx.createRadialGradient(cx, cy, maxR * 0.05, cx, cy, maxR);
+      grad.addColorStop(0,    'rgba(0,0,0,1)');
+      grad.addColorStop(0.55, 'rgba(0,0,0,0.9)');
+      grad.addColorStop(0.85, 'rgba(0,0,0,0.2)');
+      grad.addColorStop(1,    'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, size, size);
+      ctx.globalCompositeOperation = 'source-over';
+    }
+
+    function rotate() {
+      const scrollMax = document.documentElement.scrollHeight - window.innerHeight;
+      const rot = scrollMax > 0 ? (window.scrollY / scrollMax) * 360 : 0;
+      canvas.style.transform = `translate(-50%,-50%) rotate(${rot}deg)`;
+    }
+
+    draw();
+    window.addEventListener('resize', draw, { passive: true });
+
+    if (!reducedMotion) {
+      window.addEventListener('scroll', () => {
+        if (!rafId) rafId = requestAnimationFrame(() => { rotate(); rafId = null; });
+      }, { passive: true });
+    }
+  })();
 
   // Año dinámico en footer
   document.getElementById('year').textContent = new Date().getFullYear();
