@@ -30,6 +30,7 @@
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400&display=swap">
@@ -1069,6 +1070,8 @@
       <div class="contact-detail"><div class="contact-dot"></div><span><strong>Madrid</strong> · Atención presencial y online disponible</span></div>
       <div class="contact-detail"><div class="contact-dot"></div><span><strong>Entrega garantizada</strong> en 7 días desde que nos envíes los materiales</span></div>
       <div class="contact-detail"><div class="contact-dot"></div><span><strong>Presupuesto gratuito</strong> y personalizado en menos de 24 horas</span></div>
+      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Teléfono / WhatsApp:</strong> <a href="tel:+34652870405" style="color:var(--muted);text-decoration:none;">652 870 405</a></span></div>
+      <div class="contact-detail"><div class="contact-dot"></div><span><strong>Email:</strong> <a href="mailto:admin@cspiwebs.com" style="color:var(--muted);text-decoration:none;">admin@cspiwebs.com</a></span></div>
     </div>
     <div class="contact-form" id="formulario">
       <div class="form-row">
@@ -1222,6 +1225,8 @@
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
+          _replyto: document.getElementById('email').value,
+          _subject: `Presupuesto web · ${document.getElementById('negocio').value || document.getElementById('nombre').value}`,
           nombre:   document.getElementById('nombre').value,
           negocio:  document.getElementById('negocio').value,
           email:    document.getElementById('email').value,

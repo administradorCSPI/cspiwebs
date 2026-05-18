@@ -1,0 +1,27 @@
+{
+  "name": "CSPI · Diseño Web en Madrid",
+  "short_name": "CSPI",
+  "description": "Agencia de diseño web profesional en Madrid. Páginas a medida para negocios locales desde 499€.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1C1F26",
+  "theme_color": "#1C1F26",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
