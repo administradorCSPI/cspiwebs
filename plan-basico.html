@@ -137,6 +137,13 @@
   footer p { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
   footer a { color: var(--muted); text-decoration: underline; }
 
+  button.btn-pay { border: none; cursor: pointer; }
+  #payment-form-wrap { display: none; width: 100%; max-width: 480px; margin: 1.75rem auto 0; background: var(--bg2); border: 1px solid rgba(255,107,107,0.2); border-radius: 12px; padding: 1.75rem; text-align: left; }
+  .payment-form-title { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; text-align: center; }
+  #payment-error { color: var(--accent); font-size: 0.82rem; margin-top: 0.75rem; min-height: 1rem; text-align: center; }
+  #submit-payment { width: 100%; margin-top: 1.25rem; border: none; cursor: pointer; }
+  #submit-payment:disabled { opacity: 0.6; cursor: not-allowed; }
+
   @media (max-width: 640px) {
     nav { padding: 1rem 1.25rem; }
     .features-grid, .ideal-grid { grid-template-columns: 1fr; }
@@ -163,10 +170,10 @@
       <div class="plan-price"><sup>€</sup>499</div>
       <p class="plan-price-note">Precio fijo · Sin costes ocultos · Entrega en 7 días</p>
       <div class="pay-cta-wrap">
-        <a href="https://buy.stripe.com/00waEZfbq5el9fE7eQ5EY00" class="btn-pay" target="_blank" rel="noopener noreferrer">
+        <button type="button" class="btn-pay" onclick="initPayment()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
           Contratar ahora · 499€
-        </a>
+        </button>
         <span class="btn-pay-sub">Tarjeta de crédito · Apple Pay</span>
         <a href="/#formulario" class="btn-consult">¿Tienes dudas? Hablemos primero →</a>
       </div>
@@ -174,6 +181,16 @@
         <span class="payment-badge">🔒 Pago seguro SSL</span>
         <span class="payment-badge">Visa · Mastercard</span>
         <span class="payment-badge">Apple Pay</span>
+      </div>
+      <div id="payment-form-wrap">
+        <p class="payment-form-title">Introduce tus datos de pago</p>
+        <div id="payment-element"></div>
+        <p id="payment-error"></p>
+        <button type="button" id="submit-payment" class="btn-pay" onclick="submitPayment()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Pagar 499€ de forma segura
+        </button>
+        <p class="btn-pay-sub" style="margin-top:0.6rem; text-align:center;">🔒 Cifrado SSL · Procesado por Stripe</p>
       </div>
     </div>
   </div>
@@ -347,10 +364,10 @@
         <h2>Tu web lista en 7 días por 499€</h2>
         <p>Precio fijo, sin sorpresas, sin permanencia. El código es tuyo para siempre.</p>
         <div class="pay-cta-wrap">
-          <a href="https://buy.stripe.com/00waEZfbq5el9fE7eQ5EY00" class="btn-pay" target="_blank" rel="noopener noreferrer">
+          <button type="button" class="btn-pay" onclick="initPayment()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             Contratar ahora · 499€
-          </a>
+          </button>
           <span class="btn-pay-sub">Tarjeta de crédito · Apple Pay · Pago seguro SSL</span>
           <a href="/#formulario" class="btn-consult">Prefiero hablar primero →</a>
         </div>
@@ -364,5 +381,55 @@
   <p><a href="/privacidad.html">Política de privacidad y aviso legal</a></p>
 </footer>
 
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const STRIPE_KEY = 'pk_live_51TYkV5P75SGPGlXndfsoUQJWi6uUL2wRD2fAHRUJjF1oXwgvYCxkHvlUGYAbvFdWZGKU6ptLuG7RALUbei9Vb7Ll00cYnQZeRE';
+  const AMOUNT = 49900;
+
+  let stripeInst, elementsInst, ready = false;
+
+  async function initPayment() {
+    const wrap = document.getElementById('payment-form-wrap');
+    wrap.style.display = 'block';
+    setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    if (ready) return;
+
+    try {
+      const res = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: AMOUNT })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.error);
+
+      stripeInst = Stripe(STRIPE_KEY);
+      elementsInst = stripeInst.elements({ clientSecret: data.clientSecret, locale: 'es' });
+      elementsInst.create('payment', { layout: 'tabs' }).mount('#payment-element');
+      ready = true;
+    } catch (e) {
+      document.getElementById('payment-error').textContent = 'Error al cargar el formulario. Inténtalo de nuevo.';
+    }
+  }
+
+  async function submitPayment() {
+    const btn = document.getElementById('submit-payment');
+    const err = document.getElementById('payment-error');
+    btn.disabled = true;
+    btn.textContent = 'Procesando...';
+    err.textContent = '';
+
+    const { error } = await stripeInst.confirmPayment({
+      elements: elementsInst,
+      confirmParams: { return_url: 'https://cspiwebs.com/pago-exitoso.html' }
+    });
+
+    if (error) {
+      err.textContent = error.message;
+      btn.disabled = false;
+      btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Pagar 499€ de forma segura';
+    }
+  }
+</script>
 </body>
 </html>

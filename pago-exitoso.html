@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago completado · CSPI</title>
+<meta name="robots" content="noindex">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #1C1F26; --bg2: #23262F; --border: rgba(255,255,255,0.07); --text: #F0F0F0; --muted: #8A8D99; --accent: #FF6B6B; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
+  body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, transparent 40%, var(--bg) 100%); pointer-events: none; z-index: 0; }
+  .card { position: relative; z-index: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 3rem 2.5rem; max-width: 480px; width: 100%; text-align: center; }
+  .icon { font-size: 3rem; margin-bottom: 1.25rem; display: block; }
+  h1 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
+  p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 0.5rem; }
+  .highlight { color: var(--text); font-weight: 500; }
+  .btn { display: inline-block; margin-top: 2rem; background: var(--accent); color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; padding: 0.75rem 1.75rem; border-radius: 7px; text-decoration: none; transition: opacity 0.2s; }
+  .btn:hover { opacity: 0.85; }
+  .error-card { border-color: rgba(255,107,107,0.3); }
+  #loading { color: var(--muted); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="card" id="card">
+  <span id="loading">Verificando pago...</span>
+</div>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  const stripe = Stripe('pk_live_51TYkV5P75SGPGlXndfsoUQJWi6uUL2wRD2fAHRUJjF1oXwgvYCxkHvlUGYAbvFdWZGKU6ptLuG7RALUbei9Vb7Ll00cYnQZeRE');
+  const params = new URLSearchParams(window.location.search);
+  const clientSecret = params.get('payment_intent_client_secret');
+
+  if (!clientSecret) {
+    showError();
+  } else {
+    stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+      switch (paymentIntent.status) {
+        case 'succeeded':
+          showSuccess();
+          break;
+        case 'processing':
+          showProcessing();
+          break;
+        default:
+          showError();
+      }
+    }).catch(showError);
+  }
+
+  function showSuccess() {
+    document.getElementById('card').innerHTML = `
+      <span class="icon">✓</span>
+      <h1>¡Pago completado!</h1>
+      <p class="highlight">Gracias por confiar en CSPI.</p>
+      <p>Te contactaremos en <strong>menos de 24 horas</strong> para arrancar tu proyecto. Revisa tu bandeja de entrada (y la carpeta de spam por si acaso).</p>
+      <p style="margin-top:1rem;">¿Alguna duda urgente? Escríbenos a <a href="mailto:admin@cspiwebs.com" style="color:var(--accent)">admin@cspiwebs.com</a></p>
+      <a href="/" class="btn">Volver al inicio →</a>
+    `;
+  }
+
+  function showProcessing() {
+    document.getElementById('card').innerHTML = `
+      <span class="icon">⏳</span>
+      <h1>Pago en proceso</h1>
+      <p>Tu pago está siendo procesado. Te avisaremos por email en cuanto se confirme.</p>
+      <a href="/" class="btn">Volver al inicio →</a>
+    `;
+  }
+
+  function showError() {
+    document.getElementById('card').classList.add('error-card');
+    document.getElementById('card').innerHTML = `
+      <span class="icon">✕</span>
+      <h1>Algo salió mal</h1>
+      <p>No se pudo completar el pago. No se ha realizado ningún cargo.</p>
+      <p style="margin-top:0.5rem;">Puedes intentarlo de nuevo o contactarnos en <a href="mailto:admin@cspiwebs.com" style="color:var(--accent)">admin@cspiwebs.com</a></p>
+      <a href="/" class="btn">Volver al inicio →</a>
+    `;
+  }
+</script>
+</body>
+</html>
