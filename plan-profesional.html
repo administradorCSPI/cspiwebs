@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Profesional · Diseño Web desde 899€ | CSPI</title>
+<meta name="description" content="Plan Profesional de diseño web en Madrid desde 899€. Hasta 8 páginas, SEO avanzado, redes sociales, Google Business y 1 mes de soporte. El más elegido por negocios locales.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cspiwebs.com/plan-profesional.html">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1C1F26;
+    --bg2: #23262F;
+    --bg3: #2E313C;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #F0F0F0;
+    --muted: #8A8D99;
+    --accent: #FF6B6B;
+    --accent-dim: rgba(255,107,107,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, transparent 40%, var(--bg) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  nav, main, footer { position: relative; z-index: 1; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(28,31,38,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo a { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+  .nav-back { color: var(--muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; display: flex; align-items: center; gap: 0.4rem; }
+  .nav-back:hover { color: var(--text); }
+  .nav-cta { background: var(--accent); color: #fff; padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: opacity 0.2s; }
+  .nav-cta:hover { opacity: 0.85; }
+
+  main { padding-top: 80px; }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: 4rem 0; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  .plan-hero { padding: 5rem 0 3rem; text-align: center; }
+  .plan-badge { display: inline-block; background: var(--accent-dim); border: 1px solid rgba(255,107,107,0.25); color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.9rem; border-radius: 100px; margin-bottom: 0.6rem; font-family: 'Syne', sans-serif; }
+  .popular-badge { display: inline-block; background: var(--accent); color: #fff; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 100px; margin-bottom: 0.75rem; font-family: 'Syne', sans-serif; margin-left: 0.5rem; }
+  .plan-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; line-height: 1.15; margin-bottom: 0.75rem; }
+  .plan-hero h1 em { font-style: normal; color: var(--accent); }
+  .plan-price { font-family: 'Syne', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--accent); margin: 1rem 0 0.25rem; }
+  .plan-price sup { font-size: 1.8rem; vertical-align: super; }
+  .plan-price-note { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.75rem; }
+  .plan-hero-desc { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin: 0 auto 2.5rem; }
+
+  .pay-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .btn-pay { display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem; background: var(--accent); color: #fff; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; padding: 0.9rem 2.2rem; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+  .btn-pay:hover { opacity: 0.88; }
+  .btn-pay-sub { font-size: 0.75rem; color: var(--muted); }
+  .btn-consult { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--muted); font-size: 0.85rem; text-decoration: none; border: 1px solid var(--border2); padding: 0.55rem 1.2rem; border-radius: 7px; transition: color 0.2s, border-color 0.2s; }
+  .btn-consult:hover { color: var(--text); border-color: rgba(255,107,107,0.3); }
+  .payment-badges { display: flex; align-items: center; justify-content: center; gap: 0.45rem; margin-top: 0.5rem; flex-wrap: wrap; }
+  .payment-badge { font-size: 0.68rem; color: var(--muted); border: 1px solid var(--border); border-radius: 5px; padding: 0.2rem 0.5rem; }
+
+  .section-label { font-size: 0.7rem; font-weight: 600; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; font-family: 'Syne', sans-serif; }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
+  .section-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 600px; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .feature-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 1.4rem 1.5rem; }
+  .feature-item.highlight { border-color: rgba(255,107,107,0.25); background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, var(--bg2) 100%); }
+  .feature-item h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+  .feature-item h3::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  .feature-item p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; }
+
+  .ideal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .ideal-item { display: flex; align-items: flex-start; gap: 0.75rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.2rem; }
+  .ideal-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .ideal-item p { font-size: 0.84rem; color: var(--muted); }
+  .ideal-item strong { display: block; color: var(--text); font-size: 0.9rem; margin-bottom: 0.15rem; font-family: 'Syne', sans-serif; }
+
+  .steps { display: flex; flex-direction: column; gap: 0; }
+  .step { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--accent); opacity: 0.25; flex-shrink: 0; width: 2.5rem; line-height: 1; margin-top: 0.1rem; }
+  .step-body h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .step-body p { font-size: 0.85rem; color: var(--muted); }
+
+  .faq-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; cursor: pointer; font-size: 0.9rem; font-weight: 500; list-style: none; gap: 1rem; }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question::after { content: '+'; color: var(--accent); font-size: 1.3rem; font-weight: 300; flex-shrink: 0; transition: transform 0.2s; }
+  details[open] .faq-question::after { transform: rotate(45deg); }
+  .faq-answer { padding: 0 1.25rem 1rem; font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+  .cta-bottom { background: var(--bg2); border: 1px solid rgba(255,107,107,0.2); border-radius: 16px; padding: 3rem 2rem; text-align: center; }
+  .cta-bottom h2 { margin-bottom: 0.75rem; }
+  .cta-bottom p { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  footer { padding: 2rem 1.5rem; text-align: center; border-top: 1px solid var(--border); }
+  footer p { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
+  footer a { color: var(--muted); text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .features-grid, .ideal-grid { grid-template-columns: 1fr; }
+    .plan-price { font-size: 2.8rem; }
+    section { padding: 2.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Navegación">
+  <div class="nav-logo"><a href="/">CSPI</a></div>
+  <a href="/#precios" class="nav-back">← Volver a precios</a>
+  <a href="/#formulario" class="nav-cta">Hablemos →</a>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <div class="plan-hero">
+    <div class="container">
+      <div>
+        <span class="plan-badge">Plan Profesional</span>
+        <span class="popular-badge">Más popular</span>
+      </div>
+      <h1>La web que tu negocio<br><em>se merece de verdad</em></h1>
+      <p class="plan-hero-desc">El plan más elegido por negocios locales en Madrid. Web completa, SEO avanzado, redes sociales configuradas y un mes de soporte para que arranques con todo.</p>
+      <div class="plan-price"><sup>€</sup>899</div>
+      <p class="plan-price-note">Precio fijo · Sin costes ocultos · Entrega en 7 días</p>
+      <div class="pay-cta-wrap">
+        <a href="https://buy.stripe.com/28E7sN0gw5el1NcdDe5EY01" class="btn-pay" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Contratar ahora · 899€
+        </a>
+        <span class="btn-pay-sub">Tarjeta de crédito · Apple Pay</span>
+        <a href="/#formulario" class="btn-consult">¿Tienes dudas? Hablemos primero →</a>
+      </div>
+      <div class="payment-badges">
+        <span class="payment-badge">🔒 Pago seguro SSL</span>
+        <span class="payment-badge">Visa · Mastercard</span>
+        <span class="payment-badge">Apple Pay</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- QUÉ INCLUYE -->
+  <section>
+    <div class="container">
+      <div class="section-label">Qué incluye</div>
+      <h2>Una presencia digital completa</h2>
+      <p class="section-sub">Todo lo del Plan Básico más lo que realmente marca la diferencia para crecer: más páginas, más visibilidad y más herramientas para atraer clientes.</p>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>Hasta 8 páginas</h3>
+          <p>Inicio, servicios individuales, sobre nosotros, blog, galería, contacto y más. Espacio para contar en profundidad todo lo que ofreces.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Diseño premium a medida</h3>
+          <p>Animaciones suaves, microinteracciones y atención al detalle para que tu web transmita profesionalidad desde el primer segundo.</p>
+        </div>
+        <div class="feature-item highlight">
+          <h3>SEO avanzado</h3>
+          <p>Investigación de palabras clave para tu sector y zona, estructura semántica optimizada, Schema.org, Core Web Vitals y estrategia de contenidos inicial.</p>
+        </div>
+        <div class="feature-item highlight">
+          <h3>Redes sociales configuradas</h3>
+          <p>Creamos o actualizamos tus perfiles de Instagram, Facebook y LinkedIn con la misma imagen que la web. Coherencia visual total.</p>
+        </div>
+        <div class="feature-item highlight">
+          <h3>Google Business optimizado</h3>
+          <p>Configuramos y optimizamos tu ficha de Google Maps para aparecer en las búsquedas locales de tu zona. Crítico para negocios físicos.</p>
+        </div>
+        <div class="feature-item highlight">
+          <h3>1 mes de soporte incluido</h3>
+          <p>Cambios de texto, actualización de imágenes, ajustes de diseño o cualquier duda técnica. Un mes de respaldo sin coste adicional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PARA QUIÉN ES -->
+  <section>
+    <div class="container">
+      <div class="section-label">Para quién es</div>
+      <h2>¿Este plan es para ti?</h2>
+      <p class="section-sub">El Plan Profesional encaja si tu negocio ya funciona y quieres dar el siguiente paso:</p>
+      <div class="ideal-grid">
+        <div class="ideal-item">
+          <div class="ideal-icon">📈</div>
+          <div>
+            <strong>Quieres más clientes</strong>
+            <p>Tu negocio ya tiene tracción pero la web no está convirtiendo visitas en llamadas ni en ventas.</p>
+          </div>
+        </div>
+        <div class="ideal-item">
+          <div class="ideal-icon">🗺️</div>
+          <div>
+            <strong>Negocios con local físico</strong>
+            <p>Clínica, restaurante, tienda, estudio… donde Google Maps y las búsquedas locales son clave para captar clientes del barrio.</p>
+          </div>
+        </div>
+        <div class="ideal-item">
+          <div class="ideal-icon">🏢</div>
+          <div>
+            <strong>Empresa establecida</strong>
+            <p>Tienes varios servicios o productos y necesitas una web que los explique bien y transmita autoridad en tu sector.</p>
+          </div>
+        </div>
+        <div class="ideal-item">
+          <div class="ideal-icon">📱</div>
+          <div>
+            <strong>Quieres coherencia digital</strong>
+            <p>Web, redes sociales y Google Business con la misma imagen. Proyecta profesionalidad en todos los canales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PROCESO -->
+  <section>
+    <div class="container">
+      <div class="section-label">Cómo funciona</div>
+      <h2>De cero a publicado en 7 días</h2>
+      <p class="section-sub">Un proceso claro y sin sorpresas. Tú nos das los materiales, nosotros hacemos el resto.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>Pago y briefing (Día 1)</h3>
+            <p>Tras el pago te enviamos un formulario detallado sobre tu negocio, competencia y objetivos. Si hace falta, hacemos una videollamada de 30 minutos para dejarlo todo claro.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Investigación y materiales (Día 1–2)</h3>
+            <p>Analizamos tu sector y palabras clave. Nos mandas textos, fotos y logo. Hacemos una auditoría rápida de tu competencia online para diseñar algo que destaque.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>Diseño y desarrollo (Día 2–5)</h3>
+            <p>Construimos tu web completa: diseño premium, animaciones, SEO aplicado y formularios. Recibirás un enlace de previsualización para revisarla antes de publicar.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h3>Revisiones y ajustes (Día 5–6)</h3>
+            <p>Iteramos contigo hasta que todo esté perfecto. Revisiones ilimitadas. Nada se publica sin tu aprobación expresa.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h3>Publicación y configuración (Día 7)</h3>
+            <p>Subimos la web, configuramos las redes sociales y optimizamos tu ficha de Google Business. Todo en marcha el mismo día.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <div class="section-label">Preguntas frecuentes</div>
+      <h2>Lo que más nos preguntan</h2>
+      <p class="section-sub">Sobre el Plan Profesional en concreto.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-question">¿Qué significa "SEO avanzado" exactamente?</summary>
+          <div class="faq-answer">Investigación de las palabras clave más buscadas en tu sector y zona de Madrid, optimización técnica completa (metaetiquetas, Schema.org, velocidad, Core Web Vitals), estructura de URL limpia y un plan de contenidos inicial para que Google empiece a posicionarte desde el primer mes.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Las redes sociales las gestionáis después?</summary>
+          <div class="faq-answer">En este plan creamos y configuramos los perfiles con tu imagen corporativa. La gestión del contenido mes a mes es un servicio aparte que podemos presupuestarte si te interesa.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿En qué consiste el mes de soporte?</summary>
+          <div class="faq-answer">Durante 30 días después de la entrega puedes pedirnos cambios de texto, actualizaciones de imágenes, ajustes de diseño o resolver cualquier duda técnica. Respondemos en menos de 24h.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Cuánto cuesta el mantenimiento después del primer mes?</summary>
+          <div class="faq-answer">No hay ninguna cuota obligatoria. Si después del primer mes quieres soporte o actualizaciones, lo presupuestamos puntualmente o acordamos un mantenimiento mensual. Tú decides.</div>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-question">¿Puedo ver ejemplos de webs que hayáis hecho?</summary>
+          <div class="faq-answer">Sí, en la sección de portfolio de nuestra web principal puedes ver trabajos anteriores. También puedes pedirlo por email a admin@cspiwebs.com y te mandamos ejemplos del sector que más te interese.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CTA FINAL -->
+  <section>
+    <div class="container">
+      <div class="cta-bottom">
+        <div class="section-label">El más elegido</div>
+        <h2>Tu presencia digital completa por 899€</h2>
+        <p>Web, SEO, redes sociales y Google Business. Todo en 7 días, precio fijo, sin permanencia.</p>
+        <div class="pay-cta-wrap">
+          <a href="https://buy.stripe.com/28E7sN0gw5el1NcdDe5EY01" class="btn-pay" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            Contratar ahora · 899€
+          </a>
+          <span class="btn-pay-sub">Tarjeta de crédito · Apple Pay · Pago seguro SSL</span>
+          <a href="/#formulario" class="btn-consult">Prefiero hablar primero →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© <script>document.write(new Date().getFullYear())</script> CSPI · Diseño web en Madrid</p>
+  <p><a href="/privacidad.html">Política de privacidad y aviso legal</a></p>
+</footer>
+
+</body>
+</html>
