@@ -15,7 +15,7 @@
   body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 60px 60px; }
   body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, transparent 40%, var(--bg) 100%); pointer-events: none; z-index: 0; }
   .card { position: relative; z-index: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 3rem 2.5rem; max-width: 480px; width: 100%; text-align: center; }
-  .icon { font-size: 3rem; margin-bottom: 1.25rem; display: block; }
+  .icon { margin-bottom: 1.25rem; display: flex; justify-content: center; }
   h1 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 0.75rem; }
   p { color: var(--muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 0.5rem; }
   .highlight { color: var(--text); font-weight: 500; }
@@ -54,7 +54,7 @@
 
   function showSuccess() {
     document.getElementById('card').innerHTML = `
-      <span class="icon">✓</span>
+      <span class="icon"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="25" stroke="#FF6B6B" stroke-width="2"/><path d="M15 26.5l8 8 14-16" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <h1>¡Pago completado!</h1>
       <p class="highlight">Gracias por confiar en CSPI.</p>
       <p>Te contactaremos en <strong>menos de 24 horas</strong> para arrancar tu proyecto. Revisa tu bandeja de entrada (y la carpeta de spam por si acaso).</p>
@@ -65,7 +65,7 @@
 
   function showProcessing() {
     document.getElementById('card').innerHTML = `
-      <span class="icon">⏳</span>
+      <span class="icon"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="25" stroke="#8A8D99" stroke-width="2"/><path d="M26 16v10l6 6" stroke="#8A8D99" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <h1>Pago en proceso</h1>
       <p>Tu pago está siendo procesado. Te avisaremos por email en cuanto se confirme.</p>
       <a href="/" class="btn">Volver al inicio →</a>
@@ -75,7 +75,7 @@
   function showError() {
     document.getElementById('card').classList.add('error-card');
     document.getElementById('card').innerHTML = `
-      <span class="icon">✕</span>
+      <span class="icon"><svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="26" cy="26" r="25" stroke="#FF6B6B" stroke-width="2"/><path d="M18 18l16 16M34 18L18 34" stroke="#FF6B6B" stroke-width="2.5" stroke-linecap="round"/></svg></span>
       <h1>Algo salió mal</h1>
       <p>No se pudo completar el pago. No se ha realizado ningún cargo.</p>
       <p style="margin-top:0.5rem;">Puedes intentarlo de nuevo o contactarnos en <a href="mailto:admin@cspiwebs.com" style="color:var(--accent)">admin@cspiwebs.com</a></p>
