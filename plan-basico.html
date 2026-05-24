@@ -143,6 +143,15 @@
   #payment-error { color: var(--accent); font-size: 0.82rem; margin-top: 0.75rem; min-height: 1rem; text-align: center; }
   #submit-payment { width: 100%; margin-top: 1.25rem; border: none; cursor: pointer; }
   #submit-payment:disabled { opacity: 0.6; cursor: not-allowed; }
+  #contact-step { display: none; width: 100%; max-width: 480px; margin: 1.75rem auto 0; background: var(--bg2); border: 1px solid rgba(255,107,107,0.2); border-radius: 12px; padding: 1.75rem; text-align: left; }
+  .contact-step-title { font-family: 'Syne', sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem; text-align: center; }
+  .contact-field { margin-bottom: 1rem; }
+  .contact-field label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.35rem; }
+  .contact-field input { width: 100%; background: var(--bg3); border: 1px solid var(--border2); border-radius: 7px; padding: 0.7rem 1rem; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+  .contact-field input:focus { border-color: rgba(255,107,107,0.5); }
+  #contact-error { color: var(--accent); font-size: 0.82rem; margin-top: 0.75rem; min-height: 1rem; text-align: center; }
+  #submit-contact { width: 100%; margin-top: 0.5rem; border: none; cursor: pointer; }
+  #submit-contact:disabled { opacity: 0.6; cursor: not-allowed; }
 
   @media (max-width: 640px) {
     nav { padding: 1rem 1.25rem; }
@@ -153,6 +162,12 @@
 </style>
 </head>
 <body>
+<form name="lead-contact" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="lead-contact">
+  <input name="nombre" type="text">
+  <input name="telefono" type="tel">
+  <input name="plan" type="text">
+</form>
 
 <nav aria-label="Navegación">
   <div class="nav-logo"><a href="/">CSPI</a></div>
@@ -170,7 +185,7 @@
       <div class="plan-price"><sup>€</sup>499</div>
       <p class="plan-price-note">Precio fijo · Sin costes ocultos · Entrega en 7 días</p>
       <div class="pay-cta-wrap">
-        <button type="button" class="btn-pay" onclick="initPayment()">
+        <button type="button" class="btn-pay" onclick="showContactStep()">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
           Contratar ahora · 499€
         </button>
@@ -181,6 +196,19 @@
         <span class="payment-badge">Pago seguro SSL</span>
         <span class="payment-badge">Visa · Mastercard</span>
         <span class="payment-badge">Apple Pay</span>
+      </div>
+      <div id="contact-step">
+        <p class="contact-step-title">Antes de pagar, ¿cómo te llamamos?</p>
+        <div class="contact-field">
+          <label for="contact-name">Nombre</label>
+          <input type="text" id="contact-name" placeholder="Tu nombre" autocomplete="name">
+        </div>
+        <div class="contact-field">
+          <label for="contact-phone">Teléfono</label>
+          <input type="tel" id="contact-phone" placeholder="+34 600 000 000" autocomplete="tel">
+        </div>
+        <p id="contact-error"></p>
+        <button type="button" id="submit-contact" class="btn-pay" onclick="submitContact()">Continuar al pago →</button>
       </div>
       <div id="payment-form-wrap">
         <p class="payment-form-title">Introduce tus datos de pago</p>
@@ -364,7 +392,7 @@
         <h2>Tu web lista en 7 días por 499€</h2>
         <p>Precio fijo, sin sorpresas, sin permanencia. El código es tuyo para siempre.</p>
         <div class="pay-cta-wrap">
-          <button type="button" class="btn-pay" onclick="initPayment()">
+          <button type="button" class="btn-pay" onclick="showContactStep()">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
             Contratar ahora · 499€
           </button>
@@ -385,8 +413,44 @@
 <script>
   const STRIPE_KEY = 'pk_live_51TYkV5P75SGPGlXndfsoUQJWi6uUL2wRD2fAHRUJjF1oXwgvYCxkHvlUGYAbvFdWZGKU6ptLuG7RALUbei9Vb7Ll00cYnQZeRE';
   const AMOUNT = 49900;
+  const PLAN_NAME = 'Plan Básico (499€)';
 
   let stripeInst, elementsInst, ready = false;
+  let clientName = '', clientPhone = '';
+
+  function showContactStep() {
+    const step = document.getElementById('contact-step');
+    step.style.display = 'block';
+    setTimeout(() => step.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+    document.getElementById('contact-name').focus();
+  }
+
+  async function submitContact() {
+    const nameVal = document.getElementById('contact-name').value.trim();
+    const phoneVal = document.getElementById('contact-phone').value.trim();
+    const err = document.getElementById('contact-error');
+    const btn = document.getElementById('submit-contact');
+
+    if (!nameVal) { err.textContent = 'Por favor, introduce tu nombre.'; return; }
+    if (!phoneVal) { err.textContent = 'Por favor, introduce tu teléfono.'; return; }
+
+    err.textContent = '';
+    btn.disabled = true;
+    btn.textContent = 'Cargando...';
+    clientName = nameVal;
+    clientPhone = phoneVal;
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ 'form-name': 'lead-contact', nombre: clientName, telefono: clientPhone, plan: PLAN_NAME }).toString()
+      });
+    } catch(e) {}
+
+    document.getElementById('contact-step').style.display = 'none';
+    initPayment();
+  }
 
   async function initPayment() {
     const wrap = document.getElementById('payment-form-wrap');
@@ -398,7 +462,7 @@
       const res = await fetch('/api/create-payment-intent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount: AMOUNT })
+        body: JSON.stringify({ amount: AMOUNT, nombre: clientName, telefono: clientPhone, plan: PLAN_NAME })
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error);

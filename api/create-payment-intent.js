@@ -16,12 +16,17 @@ module.exports = async (req, res) => {
     return res.status(400).json({ error: 'Importe no válido' });
   }
 
+  const nombre = String(req.body?.nombre || '').slice(0, 200);
+  const telefono = String(req.body?.telefono || '').slice(0, 50);
+  const plan = String(req.body?.plan || '').slice(0, 100);
+
   try {
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: 'eur',
       automatic_payment_methods: { enabled: true },
+      metadata: { nombre, telefono, plan }
     });
     res.status(200).json({ clientSecret: paymentIntent.client_secret });
   } catch (err) {
